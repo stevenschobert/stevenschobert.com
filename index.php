@@ -19,8 +19,8 @@ require_once 'vendor/autoload.php';
 // relative path to our posts directory, also init
 // a markdown processor and store it as 'md'
 $blog = new Slim(array(
-	'view'		=> new TwigView(),
-	'posts.path' 	=> './posts',
+	'view'			=> new TwigView(),
+	'posts.path'	=> './posts',
 	'md'			=> new dflydev\markdown\MarkdownParser(),
 	'pagination'	=> 5
 ));
@@ -58,11 +58,11 @@ $getMarkdownPosts = function ($dir) {
 			// save each post to our array, and store
 			// the post details as a new hash
 			$posts[strtotime($post_meta['date'])] = array(
-				'title' => $post_meta['title'],
-				'date' => $post_meta['date'],
-				'tags' => $post_meta['tags'],
-				'link' => $post->getBasename('.md'),
-				'html' => $post_html
+				'title'		=> $post_meta['title'],
+				'date'		=> $post_meta['date'],
+				'tags'		=> $post_meta['tags'],
+				'link'		=> $post->getBasename('.md'),
+				'html'		=> $post_html
 			);
 		}
 	}
@@ -171,10 +171,10 @@ $blog->get('/blog/:post', function($post) use ($blog) {
 
 	// build the final post object
 	$post_result = array(
-		'title' => $post_meta['title'],
-		'date' => $post_meta['date'],
-		'tags' => $post_meta['tags'],
-		'html' => $post_html
+		'title'		=> $post_meta['title'],
+		'date'		=> $post_meta['date'],
+		'tags'		=> $post_meta['tags'],
+		'html'		=> $post_html
 	);
 
 	// render the post view
@@ -200,8 +200,8 @@ $blog->get('/blog/tagged/:tag', function ($tag) use ($blog, $getMarkdownPosts) {
 
 	// render the tagged view
 	$blog->render('tagged.html', array(
-		'tag' 		=> $tag,
-		'posts' 	=> $tagged_posts
+		'tag'		=> $tag,
+		'posts'		=> $tagged_posts
 	));
 });
 
