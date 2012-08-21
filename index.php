@@ -6,8 +6,8 @@
  *
  * @author      Steven Schobert
  * @link        http://www.stevenschobert.com
- * @copyright   Copyright (c) 2012, Steven Schobert. All rights reserved
- * @version     0.1.3
+ * @copyright   Copyright (c) 2012, Steven Schobert
+ * @version     1.0
  */
 
 // ---------------------- SETUP ------------------------
