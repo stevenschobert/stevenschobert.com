@@ -7,7 +7,7 @@
  * @author      Steven Schobert
  * @link        http://www.stevenschobert.com
  * @copyright   Copyright (c) 2012, Steven Schobert
- * @version     1.0
+ * @version     1.0.1
  */
 
 // ---------------------- SETUP ------------------------
