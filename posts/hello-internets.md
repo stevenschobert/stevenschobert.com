@@ -1,7 +1,7 @@
 {
 	"title": "Hello Internets",
 	"date": "08-20-12",
-	"tags": ["career", "community"]
+	"tags": ["career"]
 }
 --
 
