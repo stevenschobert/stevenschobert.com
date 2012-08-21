@@ -1,0 +1,17 @@
+/* pagination styles */
+@import "base";
+
+.pagination {
+	margin:$base-padding-size 0 0 0;
+	text-align:center;
+
+	ul li {
+		display:inline-block;
+		padding:0 2px 0 2px;
+		margin:0 5px 0 5px;
+
+		&.disabled {
+			color:$subtle-font-color;
+		}
+	}
+}

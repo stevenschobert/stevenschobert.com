@@ -1,0 +1,23 @@
+/* base compass setup & global mixins */
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/typography";
+@import "compass/utilities/general/clearfix";
+
+/* layout settings */
+$core-width:660px;
+$base-padding-size:40px;
+
+/* layout colors */
+$base-color: #f1f1f1;
+$accent-color: #d14f4f;
+
+/* font colors */
+$base-font-color: #3e3e3e;
+$bold-font-color: #2a2a2a;
+$subtle-font-color: #7f7f7f;
+
+/* vertical rhythem setup */
+$base-font-size: 16px;
+$base-line-height: 24px;
+@include establish-baseline;

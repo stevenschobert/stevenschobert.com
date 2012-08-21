@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+
+{% block page_title %}Page not found{% endblock %}
+
+{% block page_content %}
+	<div class="post">
+		<div class="title">
+			<h2>Page not found :(</h2>
+		</div>
+		<p>The page you are looking for cannot be found. Please accept my cool, but probably pointless Instagram photos as a peace offering!</p>
+	</div>
+	<div class="post">
+		<div id="instafeed"></div>
+
+		<script type="text/javascript" src="/js/instafeed.min.js"></script>
+		<script type="text/javascript">
+			instafeed.run();
+		</script>
+	</div>
+{% endblock %}

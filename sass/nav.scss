@@ -1,0 +1,33 @@
+/* top navigation styles */
+@import "base";
+
+.nav {
+	background:$bold-font-color;
+	border-bottom:1px solid darken($bold-font-color, 5%);
+	@include box-shadow(lighten($bold-font-color, 5%) 0 -1px 0 inset);
+
+	ul {
+		li {
+			/* horizontal spacing between nav elements */
+			margin:0 15px 0 0;
+			@include inline-block;
+
+			a {
+				display:block;
+				color:#ffffff;
+				padding:3px 0 3px 0;
+				@include text-shadow(darken($bold-font-color, 50%) 0 1px);
+
+				/* hover border doesn't resize nav */
+				&:hover {
+					padding:3px 0 2px 0;
+				}
+
+				/* adjusted icon size */
+				.icon {
+					font-size:$base-font-size + 1px;
+				}
+			}
+		}
+	}
+}

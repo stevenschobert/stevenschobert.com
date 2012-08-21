@@ -1,0 +1,23 @@
+/* instafeed styles */
+@import "base";
+
+#instafeed a {
+	bottom:0px;
+	position: relative;
+	margin:0 15px 15px 0;
+	border-bottom:none;
+	@include inline-block;
+	@include transition-property(bottom);
+  	@include transition-duration(150ms);
+  	@include transition-timing-function(ease-in);
+}
+
+#instafeed a:hover {
+	bottom:5px;
+}
+
+#instafeed img {
+	width:142px;
+	height:142px;
+	@include border-radius(3px);
+}

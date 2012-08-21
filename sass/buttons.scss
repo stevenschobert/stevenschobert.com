@@ -1,0 +1,70 @@
+/* button styles */
+@import "base";
+
+.button {
+	font:inherit;
+	font-weight:bold;
+	padding:3px 10px 3px 10px;
+	margin:0;
+	line-height:inherit;
+	-webkit-font-smoothing:antialiased;
+	@include inline-block;
+	@include border-radius(3px);
+
+	/* hover */
+	&:hover {
+		cursor:pointer;
+	}
+
+	/* icons */
+	.icon {
+		font-weight:normal;
+		position:relative;
+		top:1px;
+		font-size:23px;
+	}
+
+	/* primary color */
+	&.primary {
+		color:#ffffff;
+		border:1px solid darken($accent-color, 15%);
+		background:darken($accent-color, 10%);
+		@include text-shadow(darken($accent-color, 35%) 0 1px);
+		@include box-shadow(rgba(0,0,0,0.15) 0 1px, lighten($accent-color, 5%) 0 0 1px 1px inset);
+
+		/* hover state */
+		&:hover {
+			background:darken($accent-color, 2%);
+		}
+
+		/* push state */
+		&:active {
+			padding:4px 10px 2px 10px;
+			background:darken($accent-color, 10%);
+			@include box-shadow(darken($accent-color, 15%) 0 1px 1px inset);
+		}
+	}
+
+	/* default color */
+	&.default {
+		color:$base-font-color;
+		border:1px solid darken($base-color, 15%);
+		background:$base-color;
+
+		/* hover state */
+		&:hover {
+			color:#ffffff;
+			border:1px solid darken($accent-color, 15%);
+			background:darken($accent-color, 10%);
+			@include text-shadow(darken($accent-color, 35%) 0 1px);
+			@include box-shadow(rgba(0,0,0,0.15) 0 1px, lighten($accent-color, 5%) 0 0 1px 1px inset);
+		}
+
+		/* push state */
+		&:active {
+			padding:4px 10px 2px 10px;
+			background:darken($accent-color, 10%);
+			@include box-shadow(darken($accent-color, 15%) 0 1px 1px inset);
+		}
+	}
+}

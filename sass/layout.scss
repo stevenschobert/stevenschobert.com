@@ -1,0 +1,75 @@
+/* layout components */
+@import "base";
+
+/* global styles */
+body {
+	text-align:center;
+	background:$base-color;
+}
+
+/* our core container and inner padding */
+.wrapper-content {
+	width:100%;
+	max-width:$core-width;
+	margin:auto auto auto auto;
+	text-align:left;
+
+	/* keeps padding event when window is sized */
+	.wrapper-padding {
+		margin:0 15px 0 15px;
+		display:block;
+	}
+}
+
+/* some useful layout classes */
+.pull-left {
+	float:left;
+}
+.pull-right {
+	float:right;
+}
+
+/* block styling */
+pre {
+	display:block;
+	margin-bottom:$base-font-size;
+}
+
+/* post stylings */
+.post {
+	margin:$base-padding-size 0 $base-padding-size 0;
+
+	/* title spacing */
+	.title {
+		margin-bottom:$base-font-size;
+		h2 {
+			margin-bottom:0;
+		}
+	}
+
+	/* images */
+	img {
+		padding:5px;
+		max-width:100%;
+		border:1px solid darken($base-color, 15%);
+		-ms-interpolation-mode: bicubic;
+		@include box-sizing(border-box);
+		@include border-radius(3px);
+	}
+}
+
+/* footer spacing */
+.footer {
+	margin:($base-padding-size / 2) 0 ($base-padding-size / 2) 0;
+}
+
+/* page headings */
+.section-header {
+	border-bottom:1px solid darken($base-color, 15%);
+	margin:$base-padding-size 0 $base-padding-size 0;
+	@include clearfix;
+
+	h2 {
+		margin-bottom:$base-font-size / 2;
+	}
+}

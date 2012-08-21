@@ -1,0 +1,12 @@
+/* compiles into single main stylesheet */
+@import "base";
+
+/* bring in my styles */
+@import "layout";
+@import "nav";
+@import "header";
+@import "instafeed";
+@import "buttons";
+@import "pagination";
+@import "code";
+@import "typography";

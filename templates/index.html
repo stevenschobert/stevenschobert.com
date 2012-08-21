@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block page_title %}My Thoughts{% endblock %}
+
+{% block page_content %}
+	{% for post in posts %}
+		<div class="post">
+			<div class="title">
+				<h2><a href="/blog/{{ post.link }}">{{ post.title }}</a></h2>
+				<div class="meta">
+					posted {{ post.date }}
+					{% if post.tags|length > 0 %}
+						in 
+						{% for tag in post.tags %}
+							<a href="/blog/tagged/{{ tag }}">#{{ tag }}</a>{% if not loop.last %},{% endif %}
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+			{{ post.html|raw }}
+		</div>
+	{% else %}
+		<p>Hmm, seems my blog is empty! Maybe check out some <a href="http://twitter.com/stevenschobert">tweets</a> instead.</p>
+	{% endfor %}
+	
+	{% include "pagination.html" %}
+{% endblock %}
