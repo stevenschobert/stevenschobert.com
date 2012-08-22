@@ -29,7 +29,7 @@ Near the top of the `index.php` file, you will find some global settings you can
 - `posts.path`: The relative path to the directory that holds your Markdown posts
 - `pagination`: The number of posts that are show per-page
 
-__Note:__ the `view` and `md` options are required.
+__Note:__ the `view` and `md` are required and not customizable.
 
 ## Theming
 
@@ -45,10 +45,9 @@ The `templates` directory has several template files to help you style your blog
 
 So adding your own styles is as easy as changing the `<link>` tag in the `main.html` template to point to your file:
 
-	<!-- compiled stylesheet -->
 	<link rel="stylesheet" href="/css/main.css" />
 
-If you are unfamiliar with the template syntax, check out the [Twig documentation](http://twig.sensiolabs.org/).
+If you are unfamiliar with the template syntax, check out the [Twig documentation](http://twig.sensiolabs.org/documentation).
 
 ## Advanced Customization
 
