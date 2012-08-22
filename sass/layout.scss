@@ -61,6 +61,14 @@ pre {
 /* footer spacing */
 .footer {
 	margin:($base-padding-size / 2) 0 ($base-padding-size / 2) 0;
+
+	.twitter-follow-button {
+		@include inline-block;
+	}
+
+	a {
+		color:$subtle-font-color;
+	}
 }
 
 /* page headings */
