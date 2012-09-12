@@ -22,7 +22,7 @@ __Before require.js:__
     // instance of the model
     var mymodel = new myapp.Model;
 
-This all worked well fine and well when all the code lived in a single `.js` file, but when I tried splitting each definition into it's own file, I would get some weird __load errors__. Basically, 2 out 3 times, the entire app just wouldn't load.
+This all worked well fine and well when all the code lived in a single `.js` file, but when I tried splitting each definition into it's own file, I would get intermittent load errors. Basically, 2 out 3 times, the entire app just wouldn't load.
 
 After reading [this article](http://backbonetutorials.com/organizing-backbone-using-modules/), I learned that defining all of your app's models and views inside a single global object works against the way require.js is designed. It's much better to define each of your app's components like this:
 
