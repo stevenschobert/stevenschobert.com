@@ -4,83 +4,78 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+   <meta charset="utf-8">
+   <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-	<title>{% block page_title %}{% endblock %}</title>
+   <title>{% block page_title %}{% endblock %}</title>
 
-	<meta name="viewport" content="width=device-width">
+   <meta name="viewport" content="width=device-width">
 
-	<!-- compiled stylesheet -->
-	<link rel="stylesheet" href="/css/main.css" />
+   <!-- compiled stylesheet -->
+   <link rel="stylesheet" href="/css/main.css" />
 
-	<!-- typekit loader -->
-	<script type="text/javascript" src="//use.typekit.net/mdk4vee.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+   <!-- typekit loader -->
+   <script type="text/javascript" src="//use.typekit.net/mdk4vee.js"></script>
+   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
-	<!-- Highlight.js [https://github.com/isagalaev/highlight.js] -->
-	<script src="/js/vendor/highlight.min.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+   <!-- Highlight.js [https://github.com/isagalaev/highlight.js] -->
+   <script src="/js/vendor/highlight.min.js"></script>
+   <script>hljs.initHighlightingOnLoad();</script>
 
-	<!--
-		Project: 	stevenschobert.com
-		Author:		Steven Schobert
-		Copyright:	Steven Schobert © 2012
-		Url:		http://www.stevenschobert.com
+   <!--
+      Project:    stevenschobert.com
+      Author:     Steven Schobert
+      Copyright:  Steven Schobert © 2012
+      Url:     http://www.stevenschobert.com
 
-		Description:
-		My flat-file blog, written in PHP.
-		
-		Fellow Developer?:
-		You can check out the full source code over on Github!
-		[http://github.com/stevenschobert/stevenschobert.com]
-	-->
+      Description:
+      My flat-file blog, written in PHP.
+
+      Fellow Developer?:
+      You can check out the full source code over on Github!
+      [http://github.com/stevenschobert/stevenschobert.com]
+   -->
 </head>
 <body>
-	<div class="nav">
-		<div class="wrapper-content">
-			<div class="wrapper-padding">
-				<ul>
-					<li><a href="/blog"><span class="icon">b</span> blog</a></li>
-					<li><a href="/about"><span class="icon">f</span> about</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="header">
-		<div class="wrapper-content">
-			<div class="wrapper-padding">
-				<a href="/">Hi, I'm Steven</a> <span class="tagline">a web developer &amp; designer</span>
-				<div class="triangle icon">-</div>
-			</div>
-		</div>
-	</div>
-	<div class="wrapper-content">
-		<div class="wrapper-padding">
-			{% block page_content %} {% endblock %}
-			<div class="footer">
-				&copy; steven schobert 2012
-			</div>
-		</div>
-	</div>
+   <div class="nav">
+      <div class="wrapper-content">
+         <div class="wrapper-padding">
+            <ul>
+               <li><a href="/blog"><span class="icon">b</span> blog</a></li>
+               <li><a href="/about"><span class="icon">f</span> about</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <div class="header">
+      <div class="wrapper-content">
+         <div class="wrapper-padding">
+            <a href="/">Hi, I'm Steven</a> <span class="tagline">a web developer &amp; designer</span>
+            <div class="triangle icon">-</div>
+         </div>
+      </div>
+   </div>
+   <div class="wrapper-content">
+      <div class="wrapper-padding">
+         {% block page_content %} {% endblock %}
+         <div class="footer">
+            &copy; steven schobert 2012
+         </div>
+      </div>
+   </div>
 
-	<!-- GoSquared -->
-	<script type="text/javascript">
-		var GoSquared = {};
-		GoSquared.acct = "GSN-909305-G";
-		(function(w){
-			function gs(){
-				w._gstc_lt = +new Date;
-				var d = document, g = d.createElement("script");
-				g.type = "text/javascript";
-				g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
-				var s = d.getElementsByTagName("script")[0];
-				s.parentNode.insertBefore(g, s);
-			}
-			w.addEventListener ?
-			w.addEventListener("load", gs, false) :
-			w.attachEvent("onload", gs);
-		})(window);
-	</script>
+   <!-- Google Analytics -->
+   <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-34192354-1']);
+      _gaq.push(['_setDomainName', 'stevenschobert.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+   </script>
 </body>
 </html>
