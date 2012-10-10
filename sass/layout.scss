@@ -39,6 +39,12 @@ pre {
 .post {
 	margin:$base-padding-size 0 $base-padding-size 0;
 
+	/* posts adjacent to eachother */
+	/* should have extra padding */
+	&+ .post {
+		margin-top: ($base-padding-size * 2) !important;
+	}
+
 	/* title spacing */
 	.title {
 		margin-bottom:$base-font-size;
