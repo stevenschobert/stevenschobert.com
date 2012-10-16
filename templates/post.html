@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
 
+{% block authorship %}<link rel="author" href="https://plus.google.com/u/0/107263002592733526184">{% endblock %}
+
 {% block page_title %}{{ post.title }}{% endblock %}
 
 {% block page_content %}
@@ -9,7 +11,7 @@
 			<div class="meta">
 				posted {{ post.date }}
 				{% if post.tags|length > 0 %}
-					in 
+					in
 					{% for tag in post.tags %}
 						<a href="/blog/tagged/{{ tag }}">#{{ tag }}</a>{% if not loop.last %},{% endif %}
 					{% endfor %}
