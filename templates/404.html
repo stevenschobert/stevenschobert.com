@@ -3,18 +3,23 @@
 {% block page_title %}Page not found{% endblock %}
 
 {% block page_content %}
-	<div class="post">
+	<div class="post" style="margin-bottom:0px;">
 		<div class="title">
 			<h2>Page not found :(</h2>
 		</div>
 		<p>The page you are looking for cannot be found. Please accept my cool, but probably pointless Instagram photos as a peace offering!</p>
+		<p><div id="instafeed"></div></p>
 	</div>
-	<div class="post">
-		<div id="instafeed"></div>
 
-		<script type="text/javascript" src="/js/instafeed.min.js"></script>
-		<script type="text/javascript">
-			instafeed.run();
-		</script>
-	</div>
+	<script type="text/javascript" src="/js/instafeed.min.js"></script>
+	<script type="text/javascript">
+		(function () {
+			var myfeed = new Instafeed({
+				limit: 12,
+				get: 'user',
+				userId: 4385108,
+				accessToken: '4385108.467ede5.3307aa3bd61a4793b95d428d4c40c94f'
+			}).run();
+		})();
+	</script>
 {% endblock %}
