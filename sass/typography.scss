@@ -15,6 +15,7 @@ body {
 @include font-face("Modern Pictograms", font-files("pictos/modernpics-webfont.svg", "pictos/modernpics-webfont.ttf", "pictos/modernpics-webfont.woff"), "pictos/modernpics-webfont.eot");
 .icon {
 	font-family:"Modern Pictograms";
+	font-size: $base-font-size + 2px;
 	-webkit-font-smoothing:antialiased;
 }
 
