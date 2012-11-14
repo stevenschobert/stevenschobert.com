@@ -104,6 +104,12 @@ $blog->get('/about', function () use ($blog) {
   $blog->render('about.html');
 });
 
+// projects page
+$blog->get('/projects', function () use ($blog) {
+  // render the blog page
+  $blog->render('projects.html');
+});
+
 // redirect blog/page1 to root index
 $blog->get('/blog/1', function () use ($blog) {
   $blog->redirect('/');
