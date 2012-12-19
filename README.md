@@ -9,7 +9,7 @@ Create a `.md` file with the following bit JSON at the top, and save it in the `
 ```javascript
 {
   "title": "Post Title",
-  "date": "08-20-12",
+  "date": "Aug 20, 2012",
   "tags": ["github"]
 }
 --
