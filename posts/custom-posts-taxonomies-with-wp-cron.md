@@ -1,6 +1,6 @@
 {
   "title": "Custom Post Taxonomies with wp_cron()",
-  "date": "19-12-12",
+  "date": "Dec 19, 2012",
   "tags": ["php", "wordpress"]
 }
 --

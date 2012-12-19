@@ -1,6 +1,6 @@
 {
 	"title": "Getting Backbone to Work With Require.js",
-	"date": "09-10-12",
+	"date": "Sep 10, 2012",
 	"tags": ["javascript", "backbonejs", "requirejs"]
 }
 --

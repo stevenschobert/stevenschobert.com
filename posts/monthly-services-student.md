@@ -1,6 +1,6 @@
 {
   "title": "Monthly Service Costs: Student Edition",
-  "date": "10-10-12",
+  "date": "Oct 10, 2012",
   "tags": ["services", "money", "tools"]
 }
 --

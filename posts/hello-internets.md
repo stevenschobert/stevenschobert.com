@@ -1,6 +1,6 @@
 {
 	"title": "Hello Internets",
-	"date": "08-20-12",
+	"date": "Aug 20, 2012",
 	"tags": ["career"]
 }
 --
