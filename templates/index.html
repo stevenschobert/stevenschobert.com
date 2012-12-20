@@ -3,6 +3,25 @@
 {% block page_title %}Steven's Blog{% endblock %}
 
 {% block page_content %}
+	<div class="post">
+		<h2>Blog</h2>
+		<p>This is where jot down notes on things like <a href="/blog/tagged/javascript">javascript</a>, <a href="/blog/tagged/tools">various tools</a>, and occasionally <a href="/blog/tagged/personal">personal life</a>. You can also check out my <a href="/projects">projects</a> and read <a href="/about">more about me</a>.</p>
+	</div>
+	<ul class="posts">
+		{% for post in posts %}
+			<li><a class="link-block" href="/blog/{{ post.link }}">
+				<div class="post">
+					<h3>{{ post.title }}</h3>
+					<p>{{ post.desc|raw }}</p>
+					<div class="meta">
+						posted {{ post.date }}
+					</div>
+				</div>
+			</a></li>
+		{% endfor %}
+	</ul>
+
+	<!--
 	{% for post in posts %}
 		<div class="post">
 			<div class="title">
@@ -10,18 +29,18 @@
 				<div class="meta">
 					posted {{ post.date }}
 					{% if post.tags|length > 0 %}
-						in 
+						in
 						{% for tag in post.tags %}
 							<a href="/blog/tagged/{{ tag }}">#{{ tag }}</a>{% if not loop.last %},{% endif %}
 						{% endfor %}
 					{% endif %}
 				</div>
 			</div>
-			{{ post.html|raw }}
 		</div>
 	{% else %}
 		<p>Hmm, seems my blog is empty! Maybe check out some <a href="http://twitter.com/stevenschobert">tweets</a> instead.</p>
 	{% endfor %}
-	
+	-->
+
 	{% include "pagination.html" %}
 {% endblock %}

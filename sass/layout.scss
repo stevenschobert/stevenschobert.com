@@ -64,6 +64,29 @@ pre {
 	}
 }
 
+/* post index list */
+.posts {
+	li {
+		border-top:1px solid darken($base-color, 15%);
+		&:first-child {
+			// border-top:none;
+		}
+	}
+	.link-block {
+		padding:$base-padding-size $base-padding-size / 2;
+		display: block;
+		color:$base-font-color;
+		&:hover {
+			background: darken($base-color, 3%);
+			border-bottom:none;
+		}
+
+		.post {
+			margin:0;
+		}
+	}
+}
+
 /* footer spacing */
 .footer {
 	margin:($base-padding-size / 2) 0 ($base-padding-size / 2) 0;

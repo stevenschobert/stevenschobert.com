@@ -1,7 +1,8 @@
 {
 	"title": "Hello Internets",
 	"date": "Aug 20, 2012",
-	"tags": ["career"]
+	"tags": ["career", "personal"],
+  "desc": "The hello world of blog posts"
 }
 --
 

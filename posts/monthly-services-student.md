@@ -1,7 +1,8 @@
 {
   "title": "Monthly Service Costs: Student Edition",
   "date": "Oct 10, 2012",
-  "tags": ["services", "money", "tools"]
+  "tags": ["services", "money", "tools"],
+  "desc": "A riff on Chris Coyier's article on monthly development costs, with some views from a student's budget."
 }
 --
 

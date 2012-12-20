@@ -59,6 +59,7 @@ $getMarkdownPosts = function ($dir) {
       // the post details as a new hash
       $posts[strtotime($post_meta['date'])] = array(
         'title'     => $post_meta['title'],
+        'desc'      => $post_meta['desc'],
         'date'      => $post_meta['date'],
         'tags'      => $post_meta['tags'],
         'link'      => $post->getBasename('.md'),

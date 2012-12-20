@@ -1,7 +1,8 @@
 {
   "title": "Custom Post Taxonomies with wp_cron()",
   "date": "Dec 19, 2012",
-  "tags": ["php", "wordpress"]
+  "tags": ["php", "wordpress"],
+  "desc": "Ever tried to automatically insert Wordpress posts using scheduled events? There's a couple of gotchas to look out for."
 }
 --
 
