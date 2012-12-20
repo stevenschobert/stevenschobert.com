@@ -181,6 +181,7 @@ $blog->get('/blog/:post', function($post) use ($blog) {
     'title'     => $post_meta['title'],
     'date'      => $post_meta['date'],
     'tags'      => $post_meta['tags'],
+    'desc'      => $post_meta['desc'],
     'html'      => $post_html
   );
 

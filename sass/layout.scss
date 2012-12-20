@@ -38,13 +38,7 @@ pre {
 
 /* post stylings */
 .post {
-	margin:$base-padding-size 0 $base-padding-size 0;
-
-	/* posts adjacent to eachother */
-	/* should have extra padding */
-	&+ .post {
-		margin-top: ($base-padding-size * 2) !important;
-	}
+	margin:$base-padding-size 0;
 
 	/* title spacing */
 	.title {
@@ -68,6 +62,7 @@ pre {
 /* post index list */
 .posts {
 	border-bottom:1px solid darken($base-color, 15%);
+	margin-bottom:$base-padding-size;
 
 	li {
 		border-top:1px solid darken($base-color, 15%);
@@ -100,11 +95,7 @@ pre {
 
 /* footer spacing */
 .footer {
-	margin:($base-padding-size / 2) 0 ($base-padding-size / 2) 0;
-
-	.twitter-follow-button {
-		@include inline-block;
-	}
+	margin:$base-padding-size / 2 0;
 
 	a {
 		color:$subtle-font-color;
