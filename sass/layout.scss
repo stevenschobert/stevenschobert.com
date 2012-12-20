@@ -68,10 +68,12 @@ pre {
 .posts {
 	li {
 		border-top:1px solid darken($base-color, 15%);
-		&:first-child {
-			// border-top:none;
-		}
 	}
+
+	.post {
+		margin:0;
+	}
+
 	.link-block {
 		padding:$base-padding-size $base-padding-size / 2;
 		display: block;
@@ -79,10 +81,6 @@ pre {
 		&:hover {
 			background: darken($base-color, 3%);
 			border-bottom:none;
-		}
-
-		.post {
-			margin:0;
 		}
 	}
 }
