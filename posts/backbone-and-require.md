@@ -31,10 +31,12 @@ __After require.js:__
 
     // define our component's dependencies
     define(['backbone'], function (Backbone) {
-        // component returns a Backbone model definition
-    	return Backbone.Model.extend({
+      var myModel = Backbone.Model.extend({
     		// model code
     	});
+
+      // component returns a Backbone model definition
+      return myModel;
     });
 
 Now that the model's definition isn't tied to the global `myapp` object, we can include it as a dependency in the main require.js function:
@@ -54,7 +56,7 @@ Now that the model's definition isn't tied to the global `myapp` object, we can 
 	requirejs([	'jquery',	'backbone',	'path/to/model'],
 	function	($,			Backbone,	Model) {
 		// create a new instance of our model
-		var mymodel = new Model;
+		var mymodel = new Model();
 	});
 
 After switching all of my app's components to this modular pattern, it cleared up all of the load errors I was having.
