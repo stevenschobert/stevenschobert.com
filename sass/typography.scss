@@ -18,6 +18,12 @@ body {
 	font-size: $base-font-size + 2px;
 	-webkit-font-smoothing:antialiased;
 }
+@include font-face("Rondo", font-files("rondo/rondo.svg", "rondo/rondo.ttf", "rondo/rondo.woff"), "rondo/rondo.eot");
+.icon-social {
+	font-family:"Rondo";
+	font-size: $base-font-size + 2px;
+	-webkit-font-smoothing:antialiased;
+}
 
 /* headings */
 h1, h2, h3, h4, h5, h6 {
@@ -148,4 +154,22 @@ a {
 .footer {
 	color:$subtle-font-color;
 	text-align:center;
+}
+
+/* social links section */
+.social-links {
+	text-align:center;
+	a {
+		color:darken($base-color, 15%);
+		font-size:42px;
+		padding:0 $base-padding-size / 6;
+		@include transition-property(color);
+		@include transition-timing-function(ease-out);
+		@include transition-duration(150ms);
+
+		&:hover {
+			border-bottom:none;
+			color:$accent-color;
+		}
+	}
 }
