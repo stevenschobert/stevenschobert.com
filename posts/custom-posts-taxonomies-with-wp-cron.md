@@ -31,7 +31,7 @@ Normally, when inserting posts into the database, I'll insert the post and all i
 
 Under most circumstances, this will work perfectly fine. However, if you look in the [Wordpress codex](http://codex.wordpress.org/Function_Reference/wp_insert_post) you'll find this little note:
 
-> NOTE 4: If the current user doesn't have the capability to work with a custom taxonomy then using tax_input to add a term won't work. You will need to use wp_set\_object\_terms().
+> NOTE 4: If the current user doesn't have the capability to work with a custom taxonomy then using tax_input to add a term won't work. You will need to use wp\_set\_object\_terms().
 
 Turns out, that the [wp\_cron()](http://codex.wordpress.org/Function_Reference/wp_cron) function __does not__ have permissions to create/update any taxonomy by itself, and unfortunately it won't throw any errors, it will just skip the `tax_input` part of your post object.
 
