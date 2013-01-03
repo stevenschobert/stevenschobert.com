@@ -22,7 +22,7 @@ $blog = new Slim(array(
   'view'         => new TwigView(),
   'posts.path'   => './posts',
   'md'           => new dflydev\markdown\MarkdownParser(),
-  'pagination'   => 5
+  'pagination'   => 4
 ));
 // -----------------------------------------------------
 
