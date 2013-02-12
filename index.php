@@ -176,13 +176,25 @@ $blog->get('/blog/:post', function($post) use ($blog) {
   // parse the markdown portion into HTML
   $post_html = $blog->config('md')->transformMarkdown($post_data[0]);
 
+  // get information about the request to compose the full url
+  $request = $blog->request();
+  $headers = $request->headers();
+  $resource_uri = $request->getResourceUri();
+
+  // build the full url for disqus to use
+  $full_url = ($headers['SERVER_PORT'] == '443') ? 'https://' : 'http://';
+  $full_url .= $headers['HOST'];
+  $full_url .= $resource_uri;
+
   // build the final post object
   $post_result = array(
     'title'     => $post_meta['title'],
     'date'      => $post_meta['date'],
     'tags'      => $post_meta['tags'],
     'desc'      => $post_meta['desc'],
-    'html'      => $post_html
+    'html'      => $post_html,
+    'disqusid'  => strtotime($post_meta['date']),
+    'disqusurl' => $full_url
   );
 
   // render the post view
