@@ -3,6 +3,7 @@ var Metalsmith = require("metalsmith");
 // 3rd party build scripts
 var collections = require("metalsmith-collections");
 var inPlace = require("metalsmith-in-place");
+var layouts = require("metalsmith-layouts");
 
 // first party build scripts
 var stripHamlExt = require("./lib/strip_haml_ext");
@@ -23,6 +24,9 @@ Metalsmith(__dirname)
   .use(inPlace({
     engine: "haml",
     pattern: "*.haml"
+  }))
+  .use(layouts({
+    engine: "haml"
   }))
   .use(stripHamlExt())
 
