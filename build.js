@@ -7,11 +7,15 @@ var layouts = require("metalsmith-layouts");
 
 // first party build scripts
 var stripHamlExt = require("./lib/strip_haml_ext");
+var inkplate = require("./lib/inkplate_content");
 
 // build state helpers
 var startTime = Date.now();
 
 Metalsmith(__dirname)
+  // content
+  .use(inkplate())
+
   // structure
   .use(collections({
     posts: {
