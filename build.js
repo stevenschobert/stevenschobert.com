@@ -7,7 +7,8 @@ var layouts = require("metalsmith-layouts");
 var ignore        = require("metalsmith-ignore");
 
 // first party build scripts
-var inkplate = require("./lib/inkplate_content");
+var inkplate  = require("./lib/inkplate_content");
+var permalink = require("./lib/permalink");
 var rename    = require("./lib/rename");
 
 // build state helpers
@@ -27,6 +28,7 @@ Metalsmith(__dirname)
       reverse: true
     }
   }))
+  .use(permalink())
 
   // rendering
   .use(inPlace({
