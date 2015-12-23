@@ -1,3 +1,4 @@
 %ul
   - each post in collections.posts.slice()
-    %li= post.date
+    %li
+      %a{href: urlTo(post)}= post.date

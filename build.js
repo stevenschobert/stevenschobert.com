@@ -1,10 +1,14 @@
 var Metalsmith = require("metalsmith");
+var path = require("path");
 
 // 3rd party build scripts
-var collections = require("metalsmith-collections");
-var inPlace = require("metalsmith-in-place");
-var layouts = require("metalsmith-layouts");
+var branch        = require("metalsmith-branch");
+var collections   = require("metalsmith-collections");
 var ignore        = require("metalsmith-ignore");
+var inPlace       = require("metalsmith-in-place");
+var layouts       = require("metalsmith-layouts");
+var paths         = require("metalsmith-paths");
+var rootPath      = require("metalsmith-rootpath");
 
 // first party build scripts
 var inkplate  = require("./lib/inkplate_content");
@@ -29,14 +33,28 @@ Metalsmith(__dirname)
     }
   }))
   .use(permalink())
+  .use(rootPath())
+  .use(paths())
 
   // rendering
-  .use(inPlace({
-    engine: "haml",
-    pattern: "*.haml"
-  }))
+  .use(function(files, metalsmith, done) {
+    var urlTo = function(file) {
+      if (typeof file === "string") {
+        return path.join(this.rootPath, file);
+      }
+      return path.join(this.rootPath, file.path.href);
+    };
+    for (var file in files) {
+      files[file].urlTo = urlTo.bind(files[file]);
+    }
+    done();
+  })
   .use(layouts({
     engine: "haml"
+  }))
+  .use(inPlace({
+    engine: "haml",
+    pattern: "**/*.haml"
   }))
   .use(rename(/^(.*)\.haml$/i, "$1"))
 
