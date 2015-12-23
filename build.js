@@ -6,8 +6,8 @@ var inPlace = require("metalsmith-in-place");
 var layouts = require("metalsmith-layouts");
 
 // first party build scripts
-var stripHamlExt = require("./lib/strip_haml_ext");
 var inkplate = require("./lib/inkplate_content");
+var rename    = require("./lib/rename");
 
 // build state helpers
 var startTime = Date.now();
@@ -32,7 +32,7 @@ Metalsmith(__dirname)
   .use(layouts({
     engine: "haml"
   }))
-  .use(stripHamlExt())
+  .use(rename(/^(.*)\.haml$/i, "$1"))
 
   // finalize
   .build(function resolveBuild(error) {
