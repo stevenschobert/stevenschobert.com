@@ -4,6 +4,7 @@ var Metalsmith = require("metalsmith");
 var collections = require("metalsmith-collections");
 var inPlace = require("metalsmith-in-place");
 var layouts = require("metalsmith-layouts");
+var ignore        = require("metalsmith-ignore");
 
 // first party build scripts
 var inkplate = require("./lib/inkplate_content");
@@ -14,6 +15,9 @@ var startTime = Date.now();
 
 Metalsmith(__dirname)
   // content
+  .use(ignore([
+    ".DS_Store"
+  ]))
   .use(inkplate())
 
   // structure
