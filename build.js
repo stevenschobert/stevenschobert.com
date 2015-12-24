@@ -9,6 +9,7 @@ var inPlace       = require("metalsmith-in-place");
 var layouts       = require("metalsmith-layouts");
 var paths         = require("metalsmith-paths");
 var rootPath      = require("metalsmith-rootpath");
+var sass          = require("metalsmith-sass");
 
 // first party build scripts
 var inkplate  = require("./lib/inkplate");
@@ -46,6 +47,9 @@ Metalsmith(__dirname)
   .use(paths())
 
   // rendering
+  .use(sass({
+    outputStyle: "compressed"
+  }))
   .use(function(files, metalsmith, done) {
     var urlTo = function(file) {
       if (typeof file === "string") {
