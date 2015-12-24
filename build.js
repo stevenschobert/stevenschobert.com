@@ -1,5 +1,4 @@
 var Metalsmith = require("metalsmith");
-var path = require("path");
 
 // 3rd party build scripts
 var branch        = require("metalsmith-branch");
@@ -22,9 +21,6 @@ var startTime = Date.now();
 
 Metalsmith(__dirname)
   // content
-  .use(ignore([
-    ".DS_Store"
-  ]))
   .use(inkplate({
     processPost: function(post) {
       return {
@@ -48,6 +44,7 @@ Metalsmith(__dirname)
   .use(paths())
 
   // rendering
+  .use(ignore(["layouts/**"]))
   .use(sass({
     outputStyle: "compressed"
   }))
@@ -57,11 +54,16 @@ Metalsmith(__dirname)
     pattern: "**/*.haml"
   }))
   .use(layouts({
-    engine: "haml"
+    engine: "haml",
+    directory: "src/layouts"
   }))
   .use(rename(/^(.*)\.haml$/i, "$1"))
 
   // finalize
+  .use(ignore([
+    ".DS_Store",
+    "partials/**"
+  ]))
   .build(function resolveBuild(error) {
     var endTime = Date.now();
     var elapsedSeconds = (endTime - startTime) / 100;
