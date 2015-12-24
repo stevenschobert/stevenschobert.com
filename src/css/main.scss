@@ -1,5 +1,28 @@
-$custom: #f00;
+@import 'vendor/github';
 
-body {
-  background: $custom;
+@import 'variables';
+@import 'mixins';
+@import 'core/body_text';
+@import 'core/full_image';
+@import 'core/wrappers';
+@import 'core/heading';
+@import 'core/text_link';
+@import 'core/code';
+@import 'core/lists';
+@import 'core/blockquote';
+@import 'core/text_divider';
+@import 'core/text_block';
+
+@import 'modules/header';
+@import 'modules/page_title';
+@import 'modules/posts_in_year';
+@import 'modules/posts_list';
+@import 'modules/post';
+@import 'modules/about';
+@import 'modules/home';
+@import 'modules/projects';
+@import 'modules/footer';
+
+* {
+  box-sizing: border-box;
 }

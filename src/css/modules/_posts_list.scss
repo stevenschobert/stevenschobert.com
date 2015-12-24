@@ -1,0 +1,16 @@
+.posts-list {
+  list-style: none;
+  margin: .5em 0;
+  padding: 0;
+
+  a {
+    @extend .body-text;
+    text-decoration: none;
+  }
+
+  li {
+    border-left: 3px solid;
+    margin: .5em 0;
+    padding: 0 0 0 .75em;
+  }
+}

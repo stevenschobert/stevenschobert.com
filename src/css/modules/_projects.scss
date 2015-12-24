@@ -1,0 +1,80 @@
+$project-gradients: (
+  '#516395', '#614385',
+  '#F45C43', '#EB3349',
+);
+
+.featured-projects {
+  overflow: hidden;
+
+  .project-tile {
+    margin-top: 1em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  @include respond-to(medium) {
+    .project-tile {
+      display: table;
+      float: left;
+      margin-top: 0;
+      max-width: 48.5%;
+
+      &:first-child {
+        margin-right: 2.5%;
+      }
+    }
+  }
+}
+
+.project-tile {
+  border-radius: 5px;
+  display: table;
+  padding: 3em 1.2em 3.1em;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+
+  @for $i from 1 through length($project-gradients) / 2 {
+    &:nth-child(#{$i}) {
+      $end-color: nth($project-gradients, (2 * $i) - 1);
+      $start-color: nth($project-gradients, (2 * $i));
+      background-image: linear-gradient(#{$start-color}, #{$end-color});
+    }
+  }
+
+  @include respond-to(medium) {
+    &:hover {
+      .project-tile-title {
+        text-decoration: underline;
+      }
+
+      .project-tile-subtitle {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.project-tile-content {
+  display: table-cell;
+  font-size: 1.15em;
+  vertical-align: middle;
+}
+
+.project-tile-title {
+  @extend .body-text;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  text-shadow: 0 1px rgba(0, 0, 0, .25);
+}
+
+.project-tile-subtitle {
+  @extend .body-text;
+  color: rgba(255, 255, 255, .85);
+  display: block;
+  font-size: 80%;
+  margin-top: .5em;
+}

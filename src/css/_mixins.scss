@@ -1,0 +1,20 @@
+@mixin respond-to($media) {
+  @if $media == small {
+    @media only screen and (max-width: 32em) { @content; }
+  }
+  @else if $media == medium {
+    @media only screen and (min-width: 32em) { @content; }
+  }
+  @else if $media == large {
+    @media only screen and (min-width: 59em) { @content; }
+  }
+  @else if $media == less-than-max-width {
+    @media only screen and (max-width: $max-page-width) { @content; }
+  }
+  @else if $media == max-width {
+    @media only screen and (min-width: $max-page-width) { @content; }
+  }
+  @else if $media == full-image {
+    @media only screen and (min-width: ($max-page-width + ($page-side-padding * 4))) { @content; }
+  }
+}

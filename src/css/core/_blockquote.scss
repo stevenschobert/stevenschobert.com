@@ -1,0 +1,8 @@
+.block-quote {
+  @extend .body-paragraph;
+  @extend .any-list;
+  color: $body-text-color-light;
+  font-style: italic;
+  margin-left: 0;
+  padding-left: 1.5em;
+}
