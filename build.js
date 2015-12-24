@@ -58,12 +58,12 @@ Metalsmith(__dirname)
     }
     done();
   })
-  .use(layouts({
-    engine: "haml"
-  }))
   .use(inPlace({
     engine: "haml",
     pattern: "**/*.haml"
+  }))
+  .use(layouts({
+    engine: "haml"
   }))
   .use(rename(/^(.*)\.haml$/i, "$1"))
 
