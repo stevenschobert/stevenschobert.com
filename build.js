@@ -11,7 +11,7 @@ var paths         = require("metalsmith-paths");
 var rootPath      = require("metalsmith-rootpath");
 
 // first party build scripts
-var inkplate  = require("./lib/inkplate_content");
+var inkplate  = require("./lib/inkplate");
 var permalink = require("./lib/permalink");
 var rename    = require("./lib/rename");
 
@@ -23,7 +23,15 @@ Metalsmith(__dirname)
   .use(ignore([
     ".DS_Store"
   ]))
-  .use(inkplate())
+  .use(inkplate({
+    processPost: function(post) {
+      return {
+        collection: "posts",
+        layout: "post_detail.haml",
+        date: new Date(post.created_at)
+      };
+    }
+  }))
 
   // structure
   .use(collections({

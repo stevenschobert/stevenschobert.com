@@ -3,14 +3,17 @@
   "author": "Steven Schobert <spschobert@gmail.com>",
   "private": true,
   "devDependencies": {
+    "bluebird": "^3.1.1",
     "debug": "^2.2.0",
+    "extend": "^3.0.0",
     "hamljs": "^0.6.2",
+    "metalsmith": "^2.1.0",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-in-place": "^1.3.2",
     "metalsmith-layouts": "^1.4.2",
     "metalsmith-paths": "^2.1.1",
     "metalsmith-rootpath": "^0.1.3",
-    "metalsmith": "^2.1.0"
+    "request": "^2.67.0"
   }
 }
