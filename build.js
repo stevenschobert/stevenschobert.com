@@ -28,6 +28,7 @@ Metalsmith(__dirname)
       return {
         collection: "posts",
         layout: "post_detail.haml",
+        title: post.title,
         date: new Date(post.created_at)
       };
     }
