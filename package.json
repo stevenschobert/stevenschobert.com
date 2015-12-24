@@ -3,6 +3,7 @@
   "author": "Steven Schobert <spschobert@gmail.com>",
   "private": true,
   "devDependencies": {
+    "debug": "^2.2.0",
     "hamljs": "^0.6.2",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-ignore": "^0.1.2",
