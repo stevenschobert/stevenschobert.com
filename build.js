@@ -12,6 +12,7 @@ var rootPath      = require("metalsmith-rootpath");
 var sass          = require("metalsmith-sass");
 
 // first party build scripts
+var helpers   = require("./lib/helpers");
 var inkplate  = require("./lib/inkplate");
 var permalink = require("./lib/permalink");
 var rename    = require("./lib/rename");
@@ -50,18 +51,7 @@ Metalsmith(__dirname)
   .use(sass({
     outputStyle: "compressed"
   }))
-  .use(function(files, metalsmith, done) {
-    var urlTo = function(file) {
-      if (typeof file === "string") {
-        return path.join(this.rootPath, file);
-      }
-      return path.join(this.rootPath, file.path.href);
-    };
-    for (var file in files) {
-      files[file].urlTo = urlTo.bind(files[file]);
-    }
-    done();
-  })
+  .use(helpers())
   .use(inPlace({
     engine: "haml",
     pattern: "**/*.haml"
