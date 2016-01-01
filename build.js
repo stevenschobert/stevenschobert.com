@@ -29,7 +29,8 @@ Metalsmith(__dirname)
         collection: "posts",
         layout: "post_detail.haml",
         title: post.title,
-        date: new Date(post.created_at)
+        date: new Date(post.created_at),
+        color: post.custom_fields.color_code
       };
     }
   }))

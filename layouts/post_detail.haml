@@ -25,10 +25,9 @@
 
           .post-meta
             .post-date= printDate(date)
-
             .post-color
-              .post-color-block{style: "background-color: #54C74E; border-color: #54C74E"}
-              .post-color-label #54C74E
+              .post-color-block{style: "background-color: #"+ color +"; border-color: #"+ color +";"}
+              .post-color-label= "#"+ color
 
         .text-block.post-content
           != contents
