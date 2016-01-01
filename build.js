@@ -1,7 +1,6 @@
 var Metalsmith = require("metalsmith");
 
 // 3rd party build scripts
-var branch        = require("metalsmith-branch");
 var collections   = require("metalsmith-collections");
 var ignore        = require("metalsmith-ignore");
 var inPlace       = require("metalsmith-in-place");
