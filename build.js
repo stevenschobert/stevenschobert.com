@@ -11,6 +11,7 @@ var sass          = require("metalsmith-sass");
 
 // first party build scripts
 var helpers   = require("./lib/helpers");
+var includes  = require("./lib/includes");
 var inkplate  = require("./lib/inkplate");
 var permalink = require("./lib/permalink");
 var rename    = require("./lib/rename");
@@ -19,6 +20,8 @@ var rename    = require("./lib/rename");
 var startTime = Date.now();
 
 Metalsmith(__dirname)
+  .use(ignore(["**/.DS_Store"]))
+
   // content
   .use(inkplate({
     processPost: function(post) {
@@ -43,26 +46,27 @@ Metalsmith(__dirname)
   .use(paths())
 
   // rendering
-  .use(ignore(["layouts/**"]))
   .use(sass({
     outputStyle: "compressed"
+  }))
+  .use(includes({
+    directory: "includes",
+    pattern: "**/*.haml",
+    preserveWhitespace: true,
+    matcher: "-# include (.*)"
   }))
   .use(helpers())
   .use(inPlace({
     engine: "haml",
-    pattern: "**/*.haml"
+    pattern: ["**/*.haml"]
   }))
   .use(layouts({
     engine: "haml",
-    directory: "src/layouts"
+    directory: "layouts"
   }))
   .use(rename(/^(.*)\.haml$/i, "$1"))
 
   // finalize
-  .use(ignore([
-    ".DS_Store",
-    "partials/**"
-  ]))
   .build(function resolveBuild(error) {
     var endTime = Date.now();
     var elapsedSeconds = (endTime - startTime) / 100;

@@ -1,0 +1,38 @@
+!!! 5
+  %head
+    %title= title
+
+    %meta{charset: "utf-8"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+
+    %link{rel: "stylesheet", href: urlTo("css/main.css")}
+    %link{rel: "stylesheet", href: "//brick.a.ssl.fastly.net/Bitter:400,700,400i,700i"}
+  %body
+
+    .header
+      .page-wrapper
+        %a.header-name{href: urlTo("/")} Steven Schobert
+
+        .header-links{role: "navigation"}
+          %a.header-link{href: urlTo("/projects")} Projects
+          %a.header-link{href: urlTo("/about")} About
+
+    .page-wrapper
+      .post
+        .post-heading
+          %h2.post-title= title
+
+          .post-meta
+            .post-date= date
+
+            .post-color
+              .post-color-block{style: "background-color: #54C74E; border-color: #54C74E"}
+              .post-color-label #54C74E
+
+        .text-block.post-content
+          != contents
+
+    .page-wrapper
+      .footer
+        .footer-text
+          %a{href: "https://twitter.com/stevenschobert"} @stevenschobert
