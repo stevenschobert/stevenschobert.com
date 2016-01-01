@@ -34,7 +34,7 @@ Metalsmith(__dirname)
   // structure
   .use(collections({
     posts: {
-      sortBy: 'date',
+      sortBy: "date",
       reverse: true
     }
   }))
