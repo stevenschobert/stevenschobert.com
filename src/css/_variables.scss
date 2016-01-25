@@ -1,17 +1,7 @@
-$page-side-padding: 1em;
+$max-page-width: 800px;
 
-$max-page-width: 46em;
+$small-buffer-size: 16px;
+$medium-buffer-size: 30px;
 
-$body-font: 'Bitter', serif;
-$body-text-color: #333;
-$body-text-color-dark: #222;
-$body-text-color-light: #999;
-$body-text-size: .95em;
-$body-text-size-small: .85em;
-
-$subtle-border-color: #f2f2f2;
-
-$large-section-spacing: 1.5em;
-
-$error-color: #ca3c3c;
-$success-color: #43cb56;
+$dark-copy-color: #2B2B2B;
+$light-copy-color: #808080;

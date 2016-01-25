@@ -1,12 +1,44 @@
 !!! 5
   %head
-    %title test title
+    %title Placeholder
 
     %meta{charset: "utf-8"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
 
-    %link{rel: "stylesheet", href: urlTo("css/main.css")}
-    %link{rel: "stylesheet", href: "//brick.a.ssl.fastly.net/Bitter:400,700,400i,700i"}
+    %link{rel: "stylesheet", href: urlTo("/css/main.css")}
   %body
 
-    != contents
+    .badge-wrapper
+      .badge S
+
+    .page-buffer
+      .preface
+        .preface-text
+          I'm
+          %b= "Steven Schobert "
+          &mdash; programmer, photographer, husband, father, nerd.
+        .preface-links
+          .preface-link
+            %a{href: "#"} About
+          .preface-link
+            %a{href: "#"} Twitter
+          .preface-link
+            %a{href: "#"} GitHub
+          .preface-link
+            %a{href: "#"} Archive
+          .preface-link
+            %a{href: "#"} RSS
+
+    .page-buffer
+
+      .page-title
+        %h1= title
+
+      .page-text
+        != contents
+
+    %script{src: "https://use.typekit.net/dmq5sis.js"}
+    :javascript
+      try{Typekit.load({ async: true });}catch(e){}
+
+    %script{src: "http://192.168.10.156:35729/livereload.js"}

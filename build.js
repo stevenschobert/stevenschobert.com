@@ -27,10 +27,10 @@ Metalsmith(__dirname)
     processPost: function(post) {
       return {
         collection: "posts",
-        layout: "post_detail.haml",
+        layout: "default.haml",
         title: post.title,
         date: new Date(post.created_at),
-        color: post.custom_fields.color_code
+        color: (post.custom_fields || {}).color_code
       };
     }
   }))

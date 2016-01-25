@@ -1,29 +1,122 @@
-@import 'vendor/normalize';
-@import 'vendor/github';
+@import "vendor/reset";
 
-@import 'variables';
-@import 'mixins';
-@import 'core/body_text';
-@import 'core/full_image';
-@import 'core/wrappers';
-@import 'core/heading';
-@import 'core/text_link';
-@import 'core/code';
-@import 'core/lists';
-@import 'core/blockquote';
-@import 'core/text_divider';
-@import 'core/text_block';
+@import "variables";
+@import "mixins";
 
-@import 'modules/header';
-@import 'modules/page_title';
-@import 'modules/posts_in_year';
-@import 'modules/posts_list';
-@import 'modules/post';
-@import 'modules/about';
-@import 'modules/home';
-@import 'modules/projects';
-@import 'modules/footer';
+@import "modules/preface";
+
+.badge {
+  @include copy;
+  background: #e65239;
+  color: #fff;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: lighter;
+  height: 24px;
+  line-height: 24px;
+  padding-right: 5px;
+  text-align: right;
+
+  @include respond-to(max-width) {
+    line-height: auto;
+    height: auto;
+    padding-top: 10px;
+    padding-right: 0;
+    width: 24px;
+    text-align: center;
+    padding-bottom: 0px;
+  }
+}
+
+.page-title {
+  h1 {
+    @include copy;
+    color: $dark-copy-color;
+    font-size: 1.9em;
+    line-height: 1.25em;
+    font-weight: normal;
+  }
+
+  margin-bottom: 1.5em;
+}
+
+.page-text {
+  p {
+    @include copy;
+    color: #2B2B2B;
+    font-size: 1em;
+    line-height: 1.25em;
+    margin-top: 1em;
+  }
+
+  h3 {
+    @include copy;
+    color: $dark-copy-color;
+    font-size: 1.5em;
+    font-weight: normal;
+    line-height: 1.25em;
+    margin-top: 1.5em;
+  }
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+em, i {
+  font-style: italic;
+}
 
 * {
   box-sizing: border-box;
+}
+
+
+// layouts
+.page-buffer {
+  padding: 0 $small-buffer-size;
+  max-width: $max-page-width;
+  margin: 0 auto;
+
+  @include respond-to(medium) {
+    padding: 0 $medium-buffer-size;
+  }
+}
+
+.badge-wrapper {
+  max-width: $max-page-width;
+  margin: 0 auto;
+
+  @include respond-to(max-width) {
+    padding: 0 $medium-buffer-size;
+  }
+}
+
+.badge {
+  margin-top: $small-buffer-size * 1.5;
+  padding-left: $small-buffer-size;
+
+  @include respond-to(max-width) {
+    padding-left: 0;
+    margin-top: 0;
+  }
+}
+
+.preface {
+  margin-top: $small-buffer-size * 1.5;
+  margin-bottom: $small-buffer-size * 3;
+  max-width: 420px;
+
+  @include respond-to(max-width) {
+    margin-top: $small-buffer-size * 2.5;
+  }
+
+  @include respond-to(medium) {
+    margin-top: $small-buffer-size * 1.75;
+    margin-bottom: $small-buffer-size * 3.5;
+  }
+
+  @include respond-to(large) {
+    margin-bottom: $small-buffer-size * 4;
+  }
 }
