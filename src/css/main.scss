@@ -173,8 +173,4 @@ em, i {
     margin-top: $small-buffer-size * 1.75;
     margin-bottom: $small-buffer-size * 3.5;
   }
-
-  @include respond-to(large) {
-    margin-bottom: $small-buffer-size * 4;
-  }
 }
