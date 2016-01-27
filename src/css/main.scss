@@ -70,7 +70,7 @@
     @include copy;
     font-size: 1em;
     color: $light-copy-color;
-    padding: 0 .7em;
+    padding: 0 1em;
     line-height: 1.25em;
     border-left: 3px solid #ddd;
     margin-top: 1em;
@@ -106,8 +106,6 @@
   ol li {
     list-style-type: decimal;
   }
-
-
 
 }
 
