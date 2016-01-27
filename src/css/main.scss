@@ -43,7 +43,7 @@
 .page-text {
   p {
     @include copy;
-    color: #2B2B2B;
+    color: $dark-copy-color;
     font-size: 1em;
     line-height: 1.25em;
     margin-top: 1em;
