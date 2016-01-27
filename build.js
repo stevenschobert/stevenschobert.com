@@ -6,6 +6,7 @@ var ignore        = require("metalsmith-ignore");
 var inPlace       = require("metalsmith-in-place");
 var layouts       = require("metalsmith-layouts");
 var markdown      = require("metalsmith-markdown");
+var metallic      = require("metalsmith-metallic");
 var paths         = require("metalsmith-paths");
 var rootPath      = require("metalsmith-rootpath");
 var sass          = require("metalsmith-sass");
@@ -36,6 +37,7 @@ Metalsmith(__dirname)
       };
     }
   }))
+  .use(metallic())
   .use(markdown())
 
   // structure
