@@ -42,6 +42,16 @@
 }
 
 .page-text {
+
+  a {
+    color: #3647D6;
+    text-decoration: underline;
+
+    &:active {
+      color: #D62342;
+    }
+  }
+
   &> p {
     @include copy;
     color: $dark-copy-color;
