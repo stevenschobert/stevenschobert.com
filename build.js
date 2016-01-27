@@ -5,6 +5,7 @@ var collections   = require("metalsmith-collections");
 var ignore        = require("metalsmith-ignore");
 var inPlace       = require("metalsmith-in-place");
 var layouts       = require("metalsmith-layouts");
+var markdown      = require("metalsmith-markdown");
 var paths         = require("metalsmith-paths");
 var rootPath      = require("metalsmith-rootpath");
 var sass          = require("metalsmith-sass");
@@ -24,6 +25,7 @@ Metalsmith(__dirname)
 
   // content
   .use(inkplate({
+    extension: "md",
     processPost: function(post) {
       return {
         collection: "posts",
@@ -34,6 +36,7 @@ Metalsmith(__dirname)
       };
     }
   }))
+  .use(markdown())
 
   // structure
   .use(collections({
