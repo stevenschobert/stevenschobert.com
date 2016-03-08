@@ -137,6 +137,17 @@ em, i {
   box-sizing: border-box;
 }
 
+.page-footer {
+  background: $footer-background;
+}
+
+.page-footer-text {
+  @include copy;
+  font-size: .9em;
+  text-align: center;
+  color: $footer-text-color;
+}
+
 
 // layouts
 .page-buffer {
@@ -156,6 +167,11 @@ em, i {
   @include respond-to(max-width) {
     padding: 0 $medium-buffer-size;
   }
+}
+
+.page-footer {
+  padding: $small-buffer-size * 2 0;
+  margin-top: ($small-buffer-size * 3);
 }
 
 .badge {

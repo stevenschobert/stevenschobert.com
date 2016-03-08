@@ -5,7 +5,7 @@
     %meta{charset: "utf-8"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
 
-    %link{rel: "stylesheet", href: urlTo("/css/main.css")}
+    %link{rel: "stylesheet", href: urlTo("css/main.css")}
   %body
 
     .badge-wrapper
@@ -37,8 +37,14 @@
       .page-text
         != contents
 
+    .page-footer
+      .page-buffer
+        .page-footer-text
+          != "&copy; 2012-" + new Date().getFullYear() + " "
+          Steven Schobert
+
     %script{src: "https://use.typekit.net/dmq5sis.js"}
     :javascript
       try{Typekit.load({ async: true });}catch(e){}
 
-    %script{src: "http://192.168.10.156:35729/livereload.js"}
+    %script{src: "http://192.168.10.153:35729/livereload.js"}
