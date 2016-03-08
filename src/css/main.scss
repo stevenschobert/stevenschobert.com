@@ -8,7 +8,7 @@
 
 .badge {
   @include copy;
-  background: #e65239;
+  background: $badge-color;
   color: #fff;
   display: inline-block;
   font-size: 18px;
