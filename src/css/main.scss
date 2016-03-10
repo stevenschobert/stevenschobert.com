@@ -17,15 +17,23 @@
   line-height: 24px;
   padding-right: 5px;
   text-align: right;
+  text-decoration: none;
 
   @include respond-to(max-width) {
     line-height: auto;
     height: auto;
-    padding-top: 10px;
+    transform: translateY(-6px);
+    transition-property: transform;
+    transition-duration: 150ms;
+    padding-top: 16px;
     padding-right: 0;
     width: 24px;
     text-align: center;
     padding-bottom: 0px;
+
+    &:hover {
+      transform: translateY(0px);
+    }
   }
 }
 

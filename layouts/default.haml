@@ -9,7 +9,7 @@
   %body
 
     .badge-wrapper
-      .badge S
+      %a.badge{href: urlTo("/")} S
 
     .page-buffer
       .preface
@@ -49,4 +49,4 @@
     :javascript
       try{Typekit.load({ async: true });}catch(e){}
 
-    %script{src: "http://192.168.10.153:35729/livereload.js"}
+    %script{src: "http://192.168.10.159:35729/livereload.js"}
