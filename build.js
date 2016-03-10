@@ -10,6 +10,7 @@ var metallic      = require("metalsmith-metallic");
 var paths         = require("metalsmith-paths");
 var rootPath      = require("metalsmith-rootpath");
 var sass          = require("metalsmith-sass");
+var watch         = require("metalsmith-watch");
 
 // first party build scripts
 var helpers   = require("./lib/helpers");
@@ -73,6 +74,19 @@ Metalsmith(__dirname)
   .use(rename(/^(.*)\.haml$/i, "$1"))
 
   // finalize
+  .use(function() {
+    if (process.env.NODE_ENV === "development") {
+      return watch({
+        paths: {
+          "${source}/**/*": true,
+          "layouts/**/*": "**/*",
+        },
+        livereload: true
+      });
+    }
+
+    return function(files, metalsmith, done) { done(); };
+  }())
   .build(function resolveBuild(error) {
     var endTime = Date.now();
     var elapsedSeconds = (endTime - startTime) / 100;
