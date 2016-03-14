@@ -1,7 +1,16 @@
 ---
 layout: default.haml
-title: "test"
 ---
 
-%a{href: urlTo("posts")}
-  posts
+.posts
+  - each post in collections.posts.slice()
+    .post
+      .page-title
+        %h1
+          %a{ href: urlTo(post) }= post.title
+        .page-date
+          = printDate(post.date)
+
+        %a.page-permalink{ href: urlTo(post) } &#9875;
+
+      .page-text!= post.contents

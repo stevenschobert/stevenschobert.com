@@ -32,9 +32,19 @@
             %a{href: "#"} RSS
 
     .page-buffer
+      - var title = title || null;
+      - var date = date || null;
 
-      .page-title
-        %h1= title
+      - if (title || date) {
+        - if (title) {
+          .page-title
+            %h1= title
+
+            - if (date) {
+              .page-date= printDate(date)
+            - }
+        - }
+      - }
 
       .page-text
         != contents
@@ -49,4 +59,4 @@
     :javascript
       try{Typekit.load({ async: true });}catch(e){}
 
-    %script{src: "http://192.168.10.159:35729/livereload.js"}
+    %script{src: "http://192.168.10.156:35729/livereload.js"}

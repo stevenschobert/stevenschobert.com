@@ -22,10 +22,11 @@
   @include respond-to(max-width) {
     line-height: auto;
     height: auto;
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     transition-property: transform;
-    transition-duration: 150ms;
-    padding-top: 16px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 200ms;
+    padding-top: 18px;
     padding-right: 0;
     width: 24px;
     text-align: center;
@@ -42,11 +43,34 @@
     @include copy;
     color: $dark-copy-color;
     font-size: 1.9em;
-    line-height: 1.25em;
+    line-height: 1em;
     font-weight: normal;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 
   margin-bottom: 1.5em;
+
+  .page-date {
+    @include copy;
+    display: inline-block;
+    font-size: 1.2em;
+    margin-top: .5em;
+    color: $light-copy-color;
+  }
+
+  .page-permalink {
+    display: inline-block;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    width: 24px;
+    font-size: 1em;
+    text-decoration: none;
+  }
 }
 
 .page-text {
