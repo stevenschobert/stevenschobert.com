@@ -13,11 +13,12 @@ var sass          = require("metalsmith-sass");
 var watch         = require("metalsmith-watch");
 
 // first party build scripts
-var helpers   = require("./lib/helpers");
-var includes  = require("./lib/includes");
-var inkplate  = require("./lib/inkplate");
-var permalink = require("./lib/permalink");
-var rename    = require("./lib/rename");
+var helpers           = require("./lib/helpers");
+var includes          = require("./lib/includes");
+var inkplate          = require("./lib/inkplate");
+var permalink         = require("./lib/permalink");
+var relocateUploads   = require("./lib/relocate_uploads");
+var rename            = require("./lib/rename");
 
 // build state helpers
 var startTime = Date.now();
@@ -72,6 +73,7 @@ Metalsmith(__dirname)
     directory: "layouts"
   }))
   .use(rename(/^(.*)\.haml$/i, "$1"))
+  .use(relocateUploads())
 
   // finalize
   .use(function() {
