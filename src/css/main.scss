@@ -74,6 +74,13 @@
   }
 }
 
+.post-separator {
+  color: $lighter-copy-color;
+  font-size: 1em;
+  letter-spacing: .5em;
+  text-align: center;
+}
+
 .page-text {
 
   a {
@@ -229,5 +236,17 @@ em, i {
   @include respond-to(medium) {
     margin-top: $small-buffer-size * 1.75;
     margin-bottom: $small-buffer-size * 3.5;
+  }
+}
+
+.post-separator {
+  margin: $small-buffer-size * 2 0;
+
+  @include respond-to(max-width) {
+    margin: $small-buffer-size * 2.5 0;
+  }
+
+  @include respond-to(medium) {
+    margin: $small-buffer-size * 3.5 0;
   }
 }
