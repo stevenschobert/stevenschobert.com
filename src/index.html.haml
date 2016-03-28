@@ -7,7 +7,12 @@ layout: default.haml
     .post
       .page-title
         %h1
-          %a{ href: urlTo(post) }= post.title
+          - if (post.link) {
+            %a.linked-title{ href: post.link }= post.title
+            %span.linked-title-arrow &rarr;
+          - } else {
+            %a{ href: urlTo(post) }= post.title
+          - }
         .page-date
           = printDate(post.date)
 

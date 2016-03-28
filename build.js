@@ -34,7 +34,8 @@ Metalsmith(__dirname)
         collection: "posts",
         layout: "default.haml",
         title: post.title,
-        date: new Date(post.created_at)
+        date: new Date(post.created_at),
+        link: (post.custom_fields || {}).link
       };
     },
     processPage: function(page) {

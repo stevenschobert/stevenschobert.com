@@ -34,11 +34,18 @@
     .page-buffer
       - var title = title || null;
       - var date = date || null;
+      - var link = link || null;
 
       - if (title || date) {
         - if (title) {
           .page-title
-            %h1= title
+            %h1
+              - if (link) {
+                %a.linked-title{ href: link }= title
+                %span.linked-title-arrow &rarr;
+              - } else {
+                = title
+              - }
 
             - if (date) {
               .page-date= printDate(date)
