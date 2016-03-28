@@ -34,8 +34,13 @@ Metalsmith(__dirname)
         collection: "posts",
         layout: "default.haml",
         title: post.title,
-        date: new Date(post.created_at),
-        color: (post.custom_fields || {}).color_code
+        date: new Date(post.created_at)
+      };
+    },
+    processPage: function(page) {
+      return {
+        layout: "default.haml",
+        title: page.title
       };
     }
   }))
