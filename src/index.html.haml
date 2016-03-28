@@ -11,6 +11,6 @@ layout: default.haml
         .page-date
           = printDate(post.date)
 
-        %a.page-permalink{ href: urlTo(post) } &#9875;
+        %a.page-permalink{ title: "Permalink", href: urlTo(post) } &#8267;
 
       .page-text!= post.contents

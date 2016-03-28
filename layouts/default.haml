@@ -42,6 +42,7 @@
 
             - if (date) {
               .page-date= printDate(date)
+              %a.page-permalink{ title: "Permalink", href: urlToSelf() } &#8267;
             - }
         - }
       - }
