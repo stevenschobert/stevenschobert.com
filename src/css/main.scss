@@ -92,6 +92,13 @@
     }
   }
 
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto 0 auto;
+  }
+
   &> p {
     @include copy;
     color: $dark-copy-color;
