@@ -8,54 +8,53 @@
     %link{rel: "stylesheet", href: urlTo("css/main.css")}
   %body
 
-    .badge-wrapper
-      %a.badge{href: urlTo("/")} S
+    .page-wrap
+      .badge-wrapper
+        %a.badge{href: urlTo("/")} S
 
-    .page-buffer
-      .preface
-        .preface-text
-          I'm
-          %b
-            %a{href: urlTo("/")}= "Steven Schobert"
-            &nbsp;
-          &mdash; programmer, photographer, husband, father, nerd.
-        .preface-links
-          .preface-link
-            %a{href: "#"} About
-          .preface-link
-            %a{href: "#"} Twitter
-          .preface-link
-            %a{href: "#"} GitHub
-          .preface-link
-            %a{href: urlTo("archive")} Archive
-          .preface-link
-            %a{href: "#"} RSS
+      .page-buffer
+        .preface
+          .preface-text
+            I'm
+            %b
+              %a{href: urlTo("/")}= "Steven Schobert"
+              &nbsp;
+            &mdash; programmer, photographer, husband, father, nerd.
+          .preface-links
+            .preface-link
+              %a{href: urlTo("archive")} Archive
+            .preface-link
+              %a{href: "#"} Twitter
+            .preface-link
+              %a{href: "#"} GitHub
+            .preface-link
+              %a{href: "#"} RSS
 
-    .page-buffer
-      - var title = title || null;
-      - var date = date || null;
-      - var link = link || null;
+      .page-buffer
+        - var title = title || null;
+        - var date = date || null;
+        - var link = link || null;
 
-      - if (title || date) {
-        - if (title) {
-          .page-title
-            %h1
-              - if (link) {
-                %a.linked-title{ href: link }= title
-                %span.linked-title-arrow &rarr;
-              - } else {
-                = title
+        - if (title || date) {
+          - if (title) {
+            .page-title
+              %h1
+                - if (link) {
+                  %a.linked-title{ href: link }= title
+                  %span.linked-title-arrow &rarr;
+                - } else {
+                  = title
+                - }
+
+              - if (date) {
+                .page-date= printDate(date)
+                %a.page-permalink{ title: "Permalink", href: urlToSelf() } &#8267;
               - }
-
-            - if (date) {
-              .page-date= printDate(date)
-              %a.page-permalink{ title: "Permalink", href: urlToSelf() } &#8267;
-            - }
+          - }
         - }
-      - }
 
-      .page-text
-        != contents
+        .page-text
+          != contents
 
     .page-footer
       .page-buffer
