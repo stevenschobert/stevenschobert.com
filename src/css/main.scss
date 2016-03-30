@@ -268,3 +268,56 @@ em, i {
     margin: $small-buffer-size * 3.5 0;
   }
 }
+
+.archive-section {
+  ul {
+    margin: $spacing-unit 0 0 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid $lighter-copy-color;
+    }
+  }
+}
+
+.archives-link {
+  font-size: 1.35em;
+}
+
+.archive-year {
+  @include copy;
+  color: $dark-copy-color;
+  font-size: 1.25em;
+}
+
+.archive-post-title {
+  @include copy;
+  color: $dark-copy-color;
+  display: inline-block;
+  font-size: 1em;
+  margin-right: -4px;
+  padding-right: $spacing-unit;
+  padding: $spacing-unit * 2 0;
+  width: 68%;
+  vertical-align: top;
+
+  .archive-year-link-type {
+    color: $light-copy-color;
+    font-style: italic;
+  }
+}
+
+.archive-post-date {
+  @include copy;
+  color: $light-copy-color;
+  display: inline-block;
+  font-size: 1em;
+  padding-left: $spacing-unit;
+  padding: $spacing-unit * 2 0;
+  text-align: right;
+  vertical-align: top;
+  width: 32%;
+}

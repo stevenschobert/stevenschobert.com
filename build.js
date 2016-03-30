@@ -1,6 +1,7 @@
 var Metalsmith = require("metalsmith");
 
 // 3rd party build scripts
+var archive       = require("metalsmith-archive");
 var collections   = require("metalsmith-collections");
 var ignore        = require("metalsmith-ignore");
 var inPlace       = require("metalsmith-in-place");
@@ -54,6 +55,9 @@ Metalsmith(__dirname)
       sortBy: "date",
       reverse: true
     }
+  }))
+  .use(archive({
+    collections: ["\\d{4}\\/\\d{2}\\/\\d{2}\\/*"]
   }))
   .use(permalink())
   .use(rootPath())
