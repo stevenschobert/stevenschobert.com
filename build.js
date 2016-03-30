@@ -30,6 +30,7 @@ Metalsmith(__dirname)
   // content
   .use(inkplate({
     extension: "md",
+    apiKey: process.env.INKPLATE_API_KEY,
     processPost: function(post) {
       return {
         collection: "posts",
