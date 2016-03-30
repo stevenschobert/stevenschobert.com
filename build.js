@@ -3,6 +3,7 @@ var Metalsmith = require("metalsmith");
 // 3rd party build scripts
 var archive       = require("metalsmith-archive");
 var collections   = require("metalsmith-collections");
+var drafts        = require("metalsmith-drafts");
 var ignore        = require("metalsmith-ignore");
 var inPlace       = require("metalsmith-in-place");
 var layouts       = require("metalsmith-layouts");
@@ -35,12 +36,14 @@ Metalsmith(__dirname)
         collection: "posts",
         layout: "default.haml",
         title: post.title,
+        draft: !!(post.status !== "publish"),
         date: new Date(post.created_at),
         link: (post.custom_fields || {}).link
       };
     },
     processPage: function(page) {
       return {
+        draft: !!(page.status !== "publish"),
         layout: "default.haml",
         title: page.title
       };
@@ -50,6 +53,7 @@ Metalsmith(__dirname)
   .use(markdown())
 
   // structure
+  .use(drafts())
   .use(collections({
     posts: {
       sortBy: "date",
