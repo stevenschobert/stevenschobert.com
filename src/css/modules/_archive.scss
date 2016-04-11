@@ -2,13 +2,18 @@
   ul {
     margin: $spacing-unit 0 0 0;
     padding: 0;
+    border-top: 1px solid $hairline-border-color;
 
     li {
       list-style-type: none;
       margin: 0;
       padding: 0;
-      border-top: 1px solid $lighter-copy-color;
+      border-bottom: 1px solid $hairline-border-color;
     }
+  }
+
+  &+ .archive-section {
+    margin-top: $spacing-unit * 4;
   }
 }
 
@@ -32,6 +37,10 @@
   padding: $spacing-unit * 2 0;
   width: 68%;
   vertical-align: top;
+
+  a {
+    text-decoration: none;
+  }
 
   .archive-year-link-type {
     color: $light-copy-color;
