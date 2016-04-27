@@ -1,1 +1,0 @@
-!function(){"use strict";var t=document.querySelectorAll(".text-block p > img");t.length>0&&[].forEach.call(t,function(t){t.parentNode.setAttribute("class","full-image")})}();
