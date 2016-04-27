@@ -1,0 +1,19 @@
+extends ../layouts/_admin
+
+block title
+  | Editor - Steven Schobert
+
+block content
+  script(type='text/x-handlebars', data-template-name='username')
+    = request.user.username
+
+  script(type='text/x-handlebars', data-template-name='application')
+    include ./templates/_application.hbs
+
+  script(type='text/x-handlebars', data-template-name='posts')
+    include ./templates/_posts.hbs
+
+  script(type='text/x-handlebars', data-template-name='post')
+    include ./templates/_post.hbs
+
+  script(type='text/javascript', src='/assets/javascript/admin.js')

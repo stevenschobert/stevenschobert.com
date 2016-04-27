@@ -1,0 +1,12 @@
+// Markdown editor overrides
+.editor-toolbar {
+  margin-bottom: 1em;
+}
+
+.CodeMirror-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+.CodeMirror {
+  height: 405px;
+}

@@ -1,0 +1,39 @@
+extends ../layouts/_base
+include ../mixins/_posts_list
+
+block title
+  | Steven Schobert
+
+block meta
+  - var desc = 'I\'m Steven Schobert, a software developer at Oven Bits.'
+
+block content
+  .page-wrapper
+    .content-wrapper
+      .page-title
+        h2.heading-large
+          | Hi, I'm Steven
+      .text-block.home-summary
+        :markdown
+          I'm a software developer living in Dallas, Texas. I work with the awesome folks at
+          [Oven Bits](http://ovenbits.com) creating beautiful web & native experiences.
+
+          You can find out [more about me](/about), or follow me on [twitter](https://twitter.com/stevenschobert).
+
+      .text-divider.home-summary-divider
+
+
+      .featured-items
+        .featured-items-first
+          .text-block
+            :markdown
+              ### Featured Projects
+          .featured-projects
+            include ../partials/_featured_projects
+
+        .featured-items-last
+          .text-block
+            :markdown
+              ### Latest Writings
+          .featured-writings
+            +posts_list(posts)

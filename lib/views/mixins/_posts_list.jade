@@ -1,0 +1,5 @@
+mixin posts_list(posts)
+  ul.posts-list
+    each post in posts
+      li(style='border-color:'+post.color)
+        a(href='/writings/'+post.slug)= post.title

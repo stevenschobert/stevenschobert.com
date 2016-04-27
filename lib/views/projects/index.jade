@@ -1,0 +1,30 @@
+extends ../layouts/_base
+
+block title
+  | Projects - Steven Schobert
+
+block meta
+  - var desc = 'My collection of software projects & libraries, both open-source & otherwise.'
+
+block content
+  .page-wrapper
+    .content-wrapper
+      .page-title
+        h2.heading-large.heading-with-subheading
+          | Projects
+        .subheading open-source & otherwise
+
+      .text-block
+        h3 Featured
+
+      .featured-projects
+        include ../partials/_featured_projects
+
+      .text-block
+        :markdown
+          ### Libraries
+
+          - [probot](https://github.com/stevenschobert/probot)
+          - [metalsmith-sass](https://github.com/stevenschobert/metalsmith-sass)
+          - [metalsmith-gravatar](https://github.com/stevenschobert/metalsmith-gravatar)
+          - [github-repo-element](https://github.com/stevenschobert/github-repo-element)

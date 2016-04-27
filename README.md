@@ -1,60 +1,17 @@
-# stevenschobert.com
+# [stevenschobert.com](http://stevenschobert.com)
 
-My flat-file blog, written in PHP and Markdown.
+My tiny little slice of the web.
 
-## Adding Posts
+> This project is just for **my own use**, but you're welcome to poke around in the source if you're
+> curious how it works under the hood.
 
-Create a `.md` file with the following bit JSON at the top, and save it in the `posts` directory:
+### Fun Bits
 
-```javascript
-{
-  "title": "Post Title",
-  "date": "Aug 20, 2012",
-  "tags": ["github"]
-}
---
-```
+- The server is written in [Node.js](http://nodejs.org).
+- There is a custom admin interface, written in [Ember](http://emberjs.com/).
+- I used [CouchDB](http://couchdb.apache.org) for a database.
 
-Simple and fast. One of the main perks of having a flat-file blog.
+### Screenshots
 
-## Configuration
-
-Near the top of the `index.php` file, there's some global settings that can be adjusted:
-
-```php
-$blog = new Slim(array(
-  'view'        => new TwigView(),
-  'posts.path'  => './posts',
-  'md'          => new dflydev\markdown\MarkdownParser(),
-  'pagination'  => 5
-));
-```
-
-- `posts.path`: The relative path to the directory that holds the Markdown posts
-- `pagination`: The number of posts that are show per-page
-
-__Note:__ the `view` and `md` are required and not customizable.
-
-## Theming
-
-All the templates are built with [Twig](http://twig.sensiolabs.org/) and are in the `templates` directory.
-
-- `main.html`: The core html template. All of the other templates extend this one. Contains all js/css links, headers & footers, etc.
-- `index.html`: The home page template. Right now shows your blog index.
-- `post.html`: The post view page, shows a single post.
-- `404.html`: Custom 404 template.
-- `about.html`: An about me page
-- `tagged.html`: The tag search template.
-- `pagination.html`: The pagination template (partial) that shows on the bottom of the blog index.
-
-Changing out styles is as easy as changing the `<link>` tag in the `main.html` template:
-
-```html
-<link rel="stylesheet" href="/css/main.css" />
-```
-
-More documentation on Twig is [available here](http://twig.sensiolabs.org/documentation).
-
-## Advanced Customization
-
-The whole blog engine is built on top of the [Slim Framework](http://www.slimframework.com/). Stable documentation is [available here](http://www.slimframework.com/documentation/stable).
+![post detail](http://f.cl.ly/items/0b1q1O3O3Y1O1N1x3q3c/Image%202014-09-20%20at%202.14.37%20AM.png)
+![post editor](http://f.cl.ly/items/0Z002b003X2K130S1t3q/Image%202014-09-20%20at%202.22.34%20AM.png)

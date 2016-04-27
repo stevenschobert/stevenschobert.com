@@ -1,0 +1,83 @@
+.post-edit {
+  display: block;
+}
+
+.post-edit-toolbar {
+  border-bottom: 1px solid $subtle-border-color;
+  padding: .75em;
+  text-align: center;
+
+  @include respond-to(medium) {
+    text-align: right;
+  }
+}
+
+.post-edit-button {
+  font-size: 80%;
+  padding: .5em 1.25em;
+
+  &~ .post-edit-button {
+    margin-left: .5em;
+  }
+
+  @include respond-to(medium) {
+    &~ .post-edit-button {
+      margin-left: 1em;
+    }
+  }
+}
+
+.post-edit-form {
+  overflow: hidden;
+  padding: ($page-side-padding * 1.5) $page-side-padding;
+  width: 100%;
+}
+
+.post-edit-input {
+  margin-top: .5em;
+  position: relative;
+  width: 100%;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include respond-to(large) {
+    float: left;
+    width: 45%;
+
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+
+    &:nth-child(odd) {
+      clear: left;
+      margin-right: 5%;
+    }
+  }
+
+  input {
+    border: 0;
+    border-bottom: 1px solid $subtle-border-color;
+    border-radius: 0;
+    display: block;
+    font-size: 95%;
+    outline: none;
+    padding: 4px 4px 4px 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  label {
+    color: $body-text-color-light;
+    display: block;
+    font-size: 60%;
+    padding: 5px 10px 0 0;
+    text-align: left;
+    text-transform: uppercase;
+  }
+}
+
+.post-edit-content {
+  padding: ($page-side-padding * .75) $page-side-padding;
+}

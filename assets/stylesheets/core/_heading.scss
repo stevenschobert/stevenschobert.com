@@ -1,0 +1,33 @@
+$base-heading-size: 1.4em;
+
+.heading {
+  color: $body-text-color-dark;
+  font-family: $body-font;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+}
+
+.heading-with-subheading {
+  margin-bottom: .5em;
+}
+
+.heading-medium {
+  @extend .heading;
+  font-size: $base-heading-size;
+}
+
+.heading-large {
+  @extend .heading;
+  font-size: $base-heading-size * 1.15;
+}
+
+.heading-small {
+  @extend .heading;
+  font-size: $base-heading-size * .85;
+}
+
+.subheading {
+  @extend .body-text;
+  color: $body-text-color-light;
+  font-size: $body-text-size-small;
+}

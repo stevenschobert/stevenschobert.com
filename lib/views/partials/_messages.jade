@@ -1,0 +1,7 @@
+if !request.messages.isEmpty()
+  ul
+    for msg in request.messages.getMessages()
+      if msg.type === 'error'
+        li(style='color: #ca3c3c;')= msg.message
+      if msg.type === 'success'
+        li(style='color: #1cb841;')= msg.message

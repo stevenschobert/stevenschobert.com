@@ -1,0 +1,41 @@
+<div class="post-edit">
+    <div class="post-edit-toolbar">
+      {{#if isDirty}}
+        <button class="post-edit-button pure-button" {{action "cancelEdit"}} {{bind-attr disabled=":post-edit-button : isNotDirty"}}>cancel</button>
+        <button class="post-edit-button pure-button pure-button-success" {{bind-attr disabled="isNotDirty"}} {{action "savePost"}}>save</button>
+      {{else}}
+        <button class="post-edit-button pure-button pure-button-error" {{action "trashPost"}}>trash</button>
+        {{#if published}}
+          <button class="post-edit-button pure-button" {{action "unpublishPost"}}>unpublish</button>
+          <!--<button class="post-edit-button pure-button">view</button>-->
+        {{else}}
+          <!--<button class="post-edit-button pure-button">preview</button>-->
+          <button class="post-edit-button pure-button pure-button-primary" {{action "publishPost"}}>publish</button>
+        {{/if}}
+      {{/if}}
+    </div>
+    <div class="post-edit-form">
+      <div class="post-edit-input">
+        <label for="post-title">Title</label>
+        {{input id="post-title" value=title placeholder="New Post"}}
+      </div>
+
+      <div class="post-edit-input">
+        <label for="post-desc">Description</label>
+        {{input id="post-desc" value=description placeholder="Meta description for search engines."}}
+      </div>
+
+      <div class="post-edit-input">
+        <label for="post-color">Color</label>
+        {{input id="post-color" value=color placeholder="#4442b0"}}
+      </div>
+
+      <div class="post-edit-input">
+        <label for="post-slug">Slug</label>
+        {{input id="post-slug" value=valueSlug placeholder=computedSlug}}
+      </div>
+    </div>
+    <div class="post-edit-content">
+      {{markdown-editor value=body placeholder="Man walks down the street in a hat like that, you know he's not afraid of anything."}}
+    </div>
+</div>

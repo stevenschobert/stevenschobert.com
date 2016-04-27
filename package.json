@@ -1,0 +1,47 @@
+{
+  "name": "stevenschobert.com",
+  "homepage": "http://stevenschobert.com",
+  "private": true,
+  "main": "lib/application.js",
+  "scripts": {
+    "start": "node scripts/start.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stevenschobert/blog.git"
+  },
+  "author": "Steven Schobert <spschobert@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stevenschobert/blog/issues"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^2.3.1",
+    "cradle": "^0.6.7",
+    "dotenv": "^0.4.0",
+    "highlight.js": "^8.3.0",
+    "keylime": "^0.2.0",
+    "librato-node": "^1.0.0",
+    "lodash": "^2.4.1",
+    "marked": "^0.3.2",
+    "moment": "^2.8.2",
+    "node-bcrypt": "0.0.1",
+    "param-case": "^1.0.1",
+    "pimm": "^0.3.0",
+    "prompt": "^0.2.13",
+    "raven": "^0.7.2",
+    "then-jade": "^2.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-sass": "^0.7.3",
+    "gulp-concat-css": "^0.1.4",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-concat": "^2.3.4",
+    "gulp-uglify": "^0.3.2",
+    "gulp-autoprefixer": "0.0.9",
+    "supervisor": "^0.6.0"
+  }
+}

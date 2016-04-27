@@ -1,0 +1,10 @@
+.full-image {
+  margin: 0 auto;
+  max-width: $max-page-width + ($page-side-padding * 4);
+  text-align: center;
+
+  img {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}
