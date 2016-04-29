@@ -1,25 +1,44 @@
 ---
 layout: default.haml
+description: I'm Steven Schobert, a software developer at Oven Bits.
 ---
 
-.posts
-  - each post in collections.posts.slice()
-    .post
-      .page-title
-        %h1
-          - if (post.link) {
-            %a.linked-title{ href: post.link }= post.title
-            %span.linked-title-arrow &rarr;
-          - } else {
-            %a{ href: urlTo(post) }= post.title
-          - }
-        .page-date
-          = printDate(post.date)
+.page-wrapper
+  .content-wrapper
+    .page-title
+      %h2.heading-large Hi, I'm Steven
+    .text-block.home-summary
+      %p
+        I'm a software developer living in Dallas, Texas. I work with the awesome folks at
+        %a{href: "http://ovenbits.com"}= "Oven Bits "
+        creating beautiful web & native experiences.
+      %p
+        You can find out
+        %a{href: urlTo("about")}= "about me, "
+        or follow me on
+        %a{href: "https://twitter.com/stevenschobert"} twitter.
+    .text-divider.home-summary-divider
 
-        %a.page-permalink{ title: "Permalink", href: urlTo(post) } &#8267;
+    .featured-items
+      .featured-items-first
+        .text-block
+          %h3 Featured Projects
+        .featured-projects
+          %a.project-tile{href: "http://instafeedjs.com"}
+            .project-tile-content
+              .project-tile-title Instafeed.js
+              .project-tile-subtitle a javascript plugin for Instagram
+          %a.project-tile{href: "https://github.com/RNCryptor/RNCryptor-go"}
+            .project-tile-content
+              .project-tile-title RNCryptor-go
+              .project-tile-subtitle Go implementation of RNCryptor
 
-      .page-text!= post.contents
-    .post-separator &bull;&bull;&bull;
-
-%p.archives-link{ style: "text-align: center;"}
-  %a{ href: urlTo("archive") } See All Posts
+      .featured-items-last
+        .text-block
+          %h3 Latest Posts
+        .featured-posts
+          %ul.posts-list
+            - each post in collections.posts.slice(0, 5)
+              - var postColor = post.color || "#eeeeee";
+              %li{style: "border-color: "+ postColor}
+                %a{href: urlTo(post)}= post.title

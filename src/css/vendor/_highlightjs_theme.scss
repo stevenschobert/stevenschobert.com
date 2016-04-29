@@ -1,71 +1,97 @@
-/**
- * GitHub Gist Theme
- * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
- */
+/*
+Docco style used in http://jashkenas.github.com/docco/ converted by Simon Madine (@thingsinjars)
+*/
 
 .hljs {
   display: block;
-  background: white;
-  padding: 0.5em;
-  color: #333333;
   overflow-x: auto;
+  padding: 0.5em;
+  color: #000;
+  background: #f8f8ff;
 }
 
 .hljs-comment,
-.hljs-meta {
-  color: #969896;
-}
-
-.hljs-string,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-strong,
-.hljs-emphasis,
 .hljs-quote {
-  color: #df5000;
+  color: #408080;
+  font-style: italic;
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-type {
-  color: #a71d5d;
+.hljs-literal,
+.hljs-subst {
+  color: #954121;
 }
 
-.hljs-literal,
-.hljs-symbol,
-.hljs-bullet,
+.hljs-number {
+  color: #40a070;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #219161;
+}
+
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-section,
+.hljs-type {
+  color: #19469d;
+}
+
+.hljs-params {
+  color: #00f;
+}
+
+.hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
 .hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #008080;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #b68;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
   color: #0086b3;
 }
 
-.hljs-section,
-.hljs-name {
-  color: #63a35c;
-}
-
-.hljs-tag {
-  color: #333333;
-}
-
-.hljs-title,
-.hljs-attr,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
-  color: #795da3;
-}
-
-.hljs-addition {
-  color: #55a532;
-  background-color: #eaffea;
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
 }
 
 .hljs-deletion {
-  color: #bd2c00;
-  background-color: #ffecec;
+  background: #fdd;
 }
 
-.hljs-link {
-  text-decoration: underline;
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
 }

@@ -37,8 +37,10 @@ Metalsmith(__dirname)
         collection: "posts",
         layout: "default.haml",
         title: post.title,
+        type: "post",
         draft: !!(post.status !== "publish"),
         date: new Date(post.created_at),
+        color: (post.custom_fields || {}).color,
         link: (post.custom_fields || {}).link
       };
     },
@@ -46,6 +48,7 @@ Metalsmith(__dirname)
       return {
         draft: !!(page.status !== "publish"),
         layout: "default.haml",
+        type: "page",
         title: page.title
       };
     }

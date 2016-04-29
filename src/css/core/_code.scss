@@ -1,0 +1,32 @@
+.inline-code {
+  background: #f8f8ff;
+  border: 1px solid #DFDFE6;
+  border-radius: 1em;
+  font-size: 80%;
+  -webkit-font-smoothing: subpixel-antialiased;
+  padding: 0 .5em;
+}
+
+.code-block {
+  background: #f8f8ff;
+  border-bottom: 1px solid #DFDFE6;
+  border-top: 1px solid #DFDFE6;
+  font-size: $body-text-size-small;
+  line-height: 1.5em;
+  margin-bottom: 0;
+  margin-top: 0;
+  -webkit-overflow-scrolling: touch;
+  padding: $page-side-padding;
+
+  @include respond-to(max-width) {
+    border-left: 1px solid #DFDFE6;
+    border-radius: 3px;
+    border-right: 1px solid #DFDFE6;
+  }
+}
+
+.code-block-large {
+  border-left: 1px solid #DFDFE6;
+  border-radius: 3px;
+  border-right: 1px solid #DFDFE6;
+}

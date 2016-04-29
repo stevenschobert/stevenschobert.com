@@ -1,104 +1,29 @@
-@import "vendor/reset";
-@import "vendor/highlightjs_theme";
+@import './vendor/normalize';
+@import './vendor/highlightjs_theme';
 
-@import "variables";
-@import "mixins";
+@import 'variables';
+@import 'mixins';
+@import 'core/body_text';
+@import 'core/full_image';
+@import 'core/wrappers';
+@import 'core/heading';
+@import 'core/text_link';
+@import 'core/code';
+@import 'core/lists';
+@import 'core/blockquote';
+@import 'core/text_divider';
+@import 'core/text_block';
 
-@import "modules/text";
-@import "modules/preface";
-@import "modules/badge";
-@import "modules/page_title";
-@import "modules/archive";
-
+@import 'modules/header';
+@import 'modules/page_title';
+@import 'modules/posts_in_year';
+@import 'modules/posts_list';
+@import 'modules/post';
+@import 'modules/about';
+@import 'modules/home';
+@import 'modules/projects';
+@import 'modules/footer';
 
 * {
   box-sizing: border-box;
-  margin: 0;
-}
-
-html, body {
-  height: 100%;
-}
-
-.page-wrap {
-  min-height: 100%;
-  margin-bottom: -($spacing-unit * 8);
-}
-
-.page-wrap:after {
-  content: "";
-  display: block;
-}
-
-.page-footer, .page-wrap:after {
-  height: $spacing-unit * 8;
-}
-
-.page-footer {
-  background: $footer-background;
-}
-
-.page-footer-text {
-  @include copy;
-  font-size: .9em;
-  text-align: center;
-  color: $footer-text-color;
-  line-height: $spacing-unit * 8;
-}
-
-
-// layouts
-.post-separator {
-  color: $lighter-copy-color;
-  font-size: 1em;
-  letter-spacing: .5em;
-  text-align: center;
-  margin: $spacing-unit * 4;
-
-  @include respond-to(medium) {
-    margin: $spacing-unit * 5;
-  }
-}
-
-.page-buffer {
-  padding: 0 $spacing-unit * 2;
-  max-width: $max-page-width;
-  margin: 0 auto;
-
-  @include respond-to(medium) {
-    padding: 0 $spacing-unit * 3;
-  }
-}
-
-.badge-wrapper {
-  max-width: $max-page-width;
-  margin: 0 auto;
-
-  @include respond-to(max-width) {
-    padding: 0 $spacing-unit * 3;
-  }
-}
-
-.badge {
-  margin-top: $spacing-unit * 3;
-  padding-left: $spacing-unit * 2;
-
-  @include respond-to(max-width) {
-    padding-left: 0;
-    margin-top: 0;
-  }
-}
-
-.preface {
-  margin-top: $spacing-unit * 3;
-  margin-bottom: $spacing-unit * 6;
-  max-width: 420px;
-
-  @include respond-to(medium) {
-    margin-bottom: $spacing-unit * 8;
-  }
-}
-
-.page-wrap {
-  padding-bottom: $spacing-unit * 6;
 }

@@ -1,13 +1,3 @@
-@mixin copy {
-  -webkit-font-smoothing: antialiased;
-  font-family: "nimbus-sans", sans-serif;
-
-  b {
-    -webkit-font-smoothing: antialiased;
-    font-weight: bold;
-  }
-}
-
 @mixin respond-to($media) {
   @if $media == small {
     @media only screen and (max-width: 32em) { @content; }
@@ -23,5 +13,8 @@
   }
   @else if $media == max-width {
     @media only screen and (min-width: $max-page-width) { @content; }
+  }
+  @else if $media == full-image {
+    @media only screen and (min-width: ($max-page-width + ($page-side-padding * 4))) { @content; }
   }
 }

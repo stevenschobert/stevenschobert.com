@@ -1,0 +1,87 @@
+.text-block {
+  margin-top: ($large-section-spacing * 1.5);
+
+  @include respond-to(medium) {
+    margin-top: ($large-section-spacing * 1.75) 0;
+  }
+
+  hr {
+    @extend .text-divider;
+    margin-top: $large-section-spacing * 1.25;
+  }
+
+  blockquote {
+    @extend .block-quote;
+  }
+
+  h2,
+  h3,
+  h4 {
+    @extend .heading;
+    margin-top: $large-section-spacing * 1.25;
+
+    &:first-child {
+      margin-top: $large-section-spacing;
+    }
+  }
+
+  &> p,
+  ul,
+  ol {
+    @extend .body-paragraph;
+    margin: ($large-section-spacing * .75) 0;
+
+    a {
+      @extend .text-link;
+    }
+
+    &> code {
+      @extend .inline-code;
+    }
+  }
+
+  p.full-image {
+    margin-left: -($page-side-padding);
+    margin-right: -($page-side-padding);
+
+    @include respond-to(full-image) {
+      margin-left: -($page-side-padding * 2);
+      margin-right: -($page-side-padding * 2);
+    }
+  }
+
+  ul {
+    @extend .bullet-list;
+  }
+
+  ol {
+    @extend .number-list;
+  }
+
+  img {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  &> pre {
+    @extend .code-block;
+    margin-left: -($page-side-padding);
+    margin-right: -($page-side-padding);
+
+    @include respond-to(less-than-max-width) {
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+    }
+
+    @include respond-to(medium) {
+      font-size: ($body-text-size-small * 1.08);
+    }
+
+    @include respond-to(max-width) {
+      border-left: 1px solid #DFDFE6;
+      border-radius: 3px;
+      border-right: 1px solid #DFDFE6;
+    }
+  }
+}

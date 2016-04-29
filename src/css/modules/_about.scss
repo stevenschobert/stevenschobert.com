@@ -1,0 +1,12 @@
+.about-image {
+  margin: 0 auto;
+  max-width: $max-page-width + ($page-side-padding * 4);
+
+  img {
+    width: 100%;
+  }
+
+  @include respond-to(full-image) {
+    margin-top: $large-section-spacing * 1.5;
+  }
+}
