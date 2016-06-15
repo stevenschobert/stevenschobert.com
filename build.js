@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var Metalsmith = require("metalsmith");
 
 // 3rd party build scripts
