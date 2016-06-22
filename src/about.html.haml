@@ -1,0 +1,48 @@
+---
+layout: default.haml
+title: About
+description: My name is Steven Schobert. I live in Dallas, TX, where I work with the awesome folks at Oven Bits making great mobile and web experiences.
+---
+
+.about-image
+  %img{ src: urlTo("images/photo.jpg") }
+.page-wrapper
+  .content-wrapper
+    .page-title
+      %h2.heading-large I'm a software developer
+    .text-block
+      %p
+        = "My name is "
+        %strong Steven Schobert
+        = ". I live in Dallas, TX, where I work with the awesome folks at "
+        %a{ href: "http://ovenbits.com" } Oven Bits
+        = " making beautiful native & web experiences."
+      %ul
+        %li
+          %a{ href: "https://twitter.com/stevenschobert" } Twitter
+        %li
+          %a{ href: "https://github.com/stevenschobert" } Github
+        %li
+          %a{ href: "https://instagram.com/stevenschobert" } Instagram
+        %li
+          %a{ href: "https://dribbble.com/stevenschobert" } Dribbble
+      %h3 About this site
+      %p
+        = "This site is statically generated using "
+        %a{ href: "http://metalsmith.io" } Metalmsith
+        = ", and a "
+        %a{ href: "https://github.com/stevenschobert/inkplate" } custom CMS
+        = " I built in Ruby. "
+        = "Text is set in"
+        %a{ href: "https://www.google.com/fonts/specimen/Bitter" } Bitter
+        = " by Google fonts."
+      %p
+        I'm not much of a designer, so when it came to the look and feel of this site, I borrowed
+        lots of elements from other great sites around the web I admire.
+      %ul
+        %li
+          %a{ href: "http://destroytoday.com" } Jonnie Hallman
+        %li
+          %a{ href: "https://svbtle.com" } Svbtle
+        %li
+          %a{ href: "http://daneden.me/" } Dan Eden
