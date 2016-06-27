@@ -12,6 +12,7 @@ var layouts       = require("metalsmith-layouts");
 var markdown      = require("metalsmith-markdown");
 var metallic      = require("metalsmith-metallic");
 var paths         = require("metalsmith-paths");
+var redirect      = require("metalsmith-redirect");
 var rootPath      = require("metalsmith-rootpath");
 var sass          = require("metalsmith-sass");
 
@@ -31,7 +32,7 @@ var pipeline = Metalsmith(__dirname);
 // misc
 pipeline.use(ignore(["**/.DS_Store"]))
 
-  // content
+// content
 pipeline.use(inkplate({
   extension: "md",
   apiKey: process.env.INKPLATE_API_KEY,
@@ -79,7 +80,7 @@ pipeline.use(permalink());
 pipeline.use(rootPath());
 pipeline.use(paths());
 
-  // rendering
+// rendering
 pipeline.use(sass({
   outputStyle: "compressed"
 }));
@@ -100,6 +101,9 @@ pipeline.use(layouts({
 }));
 pipeline.use(rename(/^(.*)\.haml$/i, "$1"));
 pipeline.use(relocateUploads());
+
+// redirects
+pipeline.use(redirect(require("./redirects.json")));
 
 // finalize
 pipeline.build(function resolveBuild(error) {
