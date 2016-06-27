@@ -29,6 +29,7 @@
         %a.header-name{href: urlTo("/")} Steven Schobert
         .header-links
           %a{href: urlTo("posts"), class: (path.dir == "posts") ? "header-link active" : "header-link"} Posts
+          %a{href: urlTo("work"), class: (path.dir == "work") ? "header-link active" : "header-link"} Work
           %a.header-link{href: urlTo("about"), class: (path.dir == "about") ? "header-link active" : "header-link"} About
 
     - if (type === "post") {
