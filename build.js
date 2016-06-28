@@ -28,6 +28,7 @@ var rename            = require("./lib/rename");
 var startTime = Date.now();
 
 var pipeline = Metalsmith(__dirname);
+pipeline.destination(process.env.BUILD_DIR || "./build");
 
 // misc
 pipeline.use(ignore(["**/.DS_Store"]))
