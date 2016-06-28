@@ -116,6 +116,6 @@ pipeline.build(function resolveBuild(error) {
     console.log(error);
     throw error;
   } else {
-    process.stdin.write("Done building! Build time: " + elapsedSeconds + " seconds");
+    console.log("Done building! Build time: " + elapsedSeconds + " seconds");
   }
 });
