@@ -29,6 +29,7 @@ var startTime = Date.now();
 
 var pipeline = Metalsmith(__dirname);
 pipeline.destination(process.env.BUILD_DIR || "./build");
+pipeline.clean(!process.env.SKIP_CLEAN);
 
 // misc
 pipeline.use(ignore(["**/.DS_Store"]))
