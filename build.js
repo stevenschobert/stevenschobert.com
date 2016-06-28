@@ -62,7 +62,7 @@ pipeline.use(metallic());
 pipeline.use(markdown());
 
 // remove drafts in production
-if (process.env.NODE_ENV === "production") {
+if (!process.env.INCLUDE_DRAFTS) {
   pipeline.use(drafts());
 }
 
