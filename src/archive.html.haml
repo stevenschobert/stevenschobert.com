@@ -1,0 +1,17 @@
+---
+layout: default.haml
+title: Archive
+---
+
+.archive.text-content
+  %h2 Archive
+  - each year in archive
+    %table
+      %thead
+        %th{ colspan: "2", align: "left" }= year.year
+      %tbody
+        - each post in year.data
+          %tr
+            %td{ align: "left", width: "64", valign: "top" }= printDateForArchive(post.date)
+            %td{ align: "left", valign: "top" }
+              %a{ href: urlTo(post) }= post.title
