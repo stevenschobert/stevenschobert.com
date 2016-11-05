@@ -6,6 +6,7 @@ var Metalsmith = require("metalsmith");
 var archive       = require("metalsmith-archive");
 var collections   = require("metalsmith-collections");
 var drafts        = require("metalsmith-drafts");
+var fingerprint   = require("metalsmith-fingerprint-ignore");
 var ignore        = require("metalsmith-ignore");
 var inPlace       = require("metalsmith-in-place");
 var layouts       = require("metalsmith-layouts");
@@ -91,6 +92,12 @@ pipeline.use(includes({
   pattern: "**/*.haml",
   preserveWhitespace: true,
   matcher: "-# include (.*)"
+}));
+pipeline.use(fingerprint({
+  pattern: [
+    "css/main.css",
+    "js/main.js"
+  ]
 }));
 pipeline.use(helpers());
 pipeline.use(inPlace({
