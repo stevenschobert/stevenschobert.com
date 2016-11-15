@@ -40,6 +40,7 @@ $small-space-unit: 8px;
 
 @import './vendor/normalize';
 @import './vendor/highlightjs_theme';
+@import './vendor/magnific-popup';
 
 .site-header {
   $top-bg-color: #36FFE8;
@@ -198,7 +199,6 @@ a.text-link {
   margin: space(2) 0;
 }
 
-
 .text-content a {
   color: #07C;
 }
@@ -230,6 +230,20 @@ a.text-link {
 .text-content img {
   display: block;
   max-width: 100%;
+}
+
+.text-content img.bordered {
+  border: 1px solid grayscale(6);
+}
+
+.text-content .image-caption {
+  color: grayscale(3);
+  font-size: 14px;
+  font-family: text-stack();
+  margin-top: space(1) 0 space(2) 0;
+  font-style: italic;
+  text-align: center;
+  display: block;
 }
 
 .text-content strong {
