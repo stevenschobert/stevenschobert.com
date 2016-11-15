@@ -5,6 +5,7 @@ var Metalsmith = require("metalsmith");
 // 3rd party build scripts
 var archive       = require("metalsmith-archive");
 var collections   = require("metalsmith-collections");
+var concat        = require("metalsmith-concat");
 var drafts        = require("metalsmith-drafts");
 var fingerprint   = require("metalsmith-fingerprint-ignore");
 var ignore        = require("metalsmith-ignore");
@@ -92,6 +93,15 @@ pipeline.use(includes({
   pattern: "**/*.haml",
   preserveWhitespace: true,
   matcher: "-# include (.*)"
+}));
+pipeline.use(concat({
+  files: [
+    "js/vendor/jquery*.js",
+    "js/vendor/*.js",
+    "js/**/*.js",
+  ],
+  output: "js/main.js",
+  keepConcatenated: false
 }));
 pipeline.use(fingerprint({
   pattern: [
