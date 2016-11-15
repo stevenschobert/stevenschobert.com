@@ -14,3 +14,9 @@ layout: default.haml
           .post-color-block{ style: "background-color: " + postColor }
           = postColor
       .entry-content!= post.contents
+
+%p.archive-callout
+  = "For older posts, check the "
+  %a{ href: urlTo("archive") }
+    Archive
+  = " page."

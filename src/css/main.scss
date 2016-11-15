@@ -398,3 +398,20 @@ a.text-link {
     display: none !important;
   }
 }
+
+.archive-callout {
+  @include side-gutter;
+  @include center-on-large-page;
+  font-family: text-stack();
+  font-size: 14px;
+  color: grayscale(2);
+  margin: space(4) 0;
+  padding: space(2) 0;
+  background: #f4f4f4;
+  text-align: center;
+  display: block;
+}
+
+.archive-callout a {
+  color: grayscale(2);
+}
