@@ -17,8 +17,12 @@ $small-space-unit: 8px;
     @return #7D7D7D;
   } @else if $n == 4 {
     @return #C4C4C4;
+  } @else if $n == 5 {
+    @return #e1e1e1;
   } @else if $n == 6 {
     @return #E8E8E8;
+  } @else if $n == 8 {
+    @return #f4f4f4;
   } @else {
     @return #000000;
   }
@@ -233,7 +237,7 @@ a.text-link {
 }
 
 .text-content img.bordered {
-  border: 1px solid grayscale(6);
+  border: 1px solid grayscale(5);
 }
 
 .text-content .image-caption {
@@ -407,7 +411,7 @@ a.text-link {
   color: grayscale(2);
   margin: space(4) 0;
   padding: space(2) 0;
-  background: #f4f4f4;
+  background: grayscale(8);
   text-align: center;
   display: block;
 }
