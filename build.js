@@ -45,11 +45,14 @@ pipeline.use(inkplate({
   apiKey: process.env.INKPLATE_API_KEY,
   host: process.env.INKPLATE_HOST,
   processPost: function(post) {
+    var description = (post.excerpt && post.excerpt.length > 0) ? post.excerpt : null;
+
     return {
       collection: "posts",
       layout: "default.haml",
       title: post.title,
       type: "post",
+      description: description,
       draft: !!(post.status !== "publish"),
       date: new Date(post.created_at),
       color: (post.custom_fields || {}).color,
@@ -57,10 +60,13 @@ pipeline.use(inkplate({
     };
   },
   processPage: function(page) {
+    var description = (page.excerpt && page.excerpt.length > 0) ? page.excerpt : null;
+
     return {
       draft: !!(page.status !== "publish"),
       layout: "default.haml",
       type: "page",
+      description: description,
       title: page.title
     };
   }

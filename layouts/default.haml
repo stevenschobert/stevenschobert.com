@@ -3,6 +3,7 @@
 - var type = type || null;
 - var date = date || null;
 - var color = color || null;
+- var canonicalUrl = urlToSelf({ canonical: true });
 
 !!! 5
   %head
@@ -18,6 +19,17 @@
     - if (description) {
       %meta{ name: "description", content: description }
     - }
+
+    - if (title) {
+      %meta{ name: "og:title", content: title }
+    - }
+
+    - if (description) {
+      %meta{ name: "og:description", content: description }
+    - }
+
+    %meta{ name: "og:type", content: "website" }
+    %meta{ name: "og:url", content: canonicalUrl }
 
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
     %link{ rel: "stylesheet", href: urlTo("css/main.css") }
