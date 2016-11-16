@@ -34,7 +34,10 @@ pipeline.destination(process.env.BUILD_DIR || "./build");
 pipeline.clean(!process.env.SKIP_CLEAN);
 
 // misc
-pipeline.use(ignore(["**/.DS_Store"]))
+pipeline.use(ignore(["**/.DS_Store"]));
+
+// global env
+pipeline.metadata().siteBaseUrl = process.env.BASE_URL || null;
 
 // content
 pipeline.use(inkplate({
