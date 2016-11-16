@@ -5,7 +5,10 @@
     $("[data-image=\"magnify\"]").magnificPopup({
       type: "image",
       retina: {
-        ratio: 2
+        ratio: 2,
+        replaceSrc: function(item, ratio) {
+          return item.src;
+        }
       }
     });
   });
