@@ -7,6 +7,7 @@ var archive       = require("metalsmith-archive");
 var collections   = require("metalsmith-collections");
 var concat        = require("metalsmith-concat");
 var drafts        = require("metalsmith-drafts");
+var feed          = require("metalsmith-feed");
 var fingerprint   = require("metalsmith-fingerprint-ignore");
 var ignore        = require("metalsmith-ignore");
 var inPlace       = require("metalsmith-in-place");
@@ -132,6 +133,29 @@ pipeline.use(relocateUploads());
 
 // redirects
 pipeline.use(redirect(require("./redirects.json")));
+
+// RSS Feed
+pipeline.use(function(files, ms, done) {
+  var baseUrl = ms.metadata().siteBaseUrl;
+  var file;
+  for (var filename in files) {
+    file = files[filename];
+    if (file.collection && file.collection.indexOf("posts") >= 0) {
+      file.siteBaseUrl = baseUrl;
+      file.url = file.urlToSelf.call(file, { canonical: true });
+    }
+  }
+  done();
+});
+pipeline.use(feed({
+  title: "Steven Schobert",
+  collection: "posts",
+  limit: 20,
+  site_url: pipeline.metadata().siteBaseUrl,
+  postDescription: function(post) {
+    return post.description;
+  }
+}));
 
 // finalize
 pipeline.build(function resolveBuild(error) {
