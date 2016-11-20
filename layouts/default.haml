@@ -4,6 +4,7 @@
 - var date = date || null;
 - var color = color || null;
 - var featuredImage = featuredImage || null;
+- var useSiteFeaturedImage = useSiteFeaturedImage || false;
 - var canonicalUrl = urlToSelf({ canonical: true });
 
 !!! 5
@@ -33,6 +34,10 @@
       - var absoluteFeaturedImage = "--CANONICAL--" + featuredImage ;
       - var featuredImageTag = '<meta name="og:image" content="'+absoluteFeaturedImage+'"/>';
       != featuredImageTag
+    - }
+    - if (useSiteFeaturedImage) {
+      - var canonicalSiteImage = urlTo("img/site-image.png", { canonical: true });
+      %meta{ name: "og:image", content: canonicalSiteImage }
     - }
 
     %meta{ name: "og:type", content: "website" }
