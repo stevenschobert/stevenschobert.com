@@ -3,6 +3,7 @@
 - var type = type || null;
 - var date = date || null;
 - var color = color || null;
+- var featuredImage = featuredImage || null;
 - var canonicalUrl = urlToSelf({ canonical: true });
 
 !!! 5
@@ -26,6 +27,12 @@
 
     - if (description) {
       %meta{ name: "og:description", content: description }
+    - }
+
+    - if (featuredImage) {
+      - var absoluteFeaturedImage = "--CANONICAL--" + featuredImage ;
+      - var featuredImageTag = '<meta name="og:image" content="'+absoluteFeaturedImage+'"/>';
+      != featuredImageTag
     - }
 
     %meta{ name: "og:type", content: "website" }

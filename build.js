@@ -46,7 +46,9 @@ pipeline.use(inkplate({
   apiKey: process.env.INKPLATE_API_KEY,
   host: process.env.INKPLATE_HOST,
   processPost: function(post) {
+    var customFields = post.custom_fields || {};
     var description = (post.excerpt && post.excerpt.length > 0) ? post.excerpt : null;
+    var featuredImage = (customFields.featured_image_url && customFields.featured_image_url.length > 0) ? customFields.featured_image_url : null;
 
     return {
       collection: "posts",
@@ -56,8 +58,9 @@ pipeline.use(inkplate({
       description: description,
       draft: !!(post.status !== "publish"),
       date: new Date(post.created_at),
-      color: (post.custom_fields || {}).color,
-      link: (post.custom_fields || {}).link
+      color: customFields.color,
+      link: customFields.link,
+      featuredImage: featuredImage
     };
   },
   processPage: function(page) {
