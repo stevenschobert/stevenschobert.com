@@ -6,7 +6,7 @@ It's a static-site generator built on top of [Metalsmith](http://metalsmith.io),
 
 ### License
 
-Some parts of the source code in this project are licensed differently than others.
+Some parts of this project are licensed differently than others.
 
 Basically, you can use all the source code however you want, but you can't copy the design without attribution, and you can't use the design in a commercial theme.
 
