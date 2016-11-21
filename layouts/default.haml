@@ -169,8 +169,9 @@
         Steven Schobert
         = " 2012-" + buildDate.getFullYear()
       %p
-        Last updated
-        = " on " + (new Date()).toLocaleString("en-US")
+        = "Last updated " + printDate(buildDate) + "."
+        %a{ href: urlTo("rss.xml") } Subscribe via RSS
+        = "."
 
     %script{ type: "text/javascript", src: urlTo("js/main.js") }
 
