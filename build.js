@@ -38,7 +38,10 @@ pipeline.clean(!process.env.SKIP_CLEAN);
 pipeline.use(ignore(["**/.DS_Store"]));
 
 // global env
-pipeline.metadata().siteBaseUrl = process.env.BASE_URL || null;
+pipeline.metadata({
+  siteBaseUrl: process.env.BASE_URL || null,
+  buildDate: new Date()
+});
 
 // content
 pipeline.use(inkplate({
