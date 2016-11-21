@@ -403,14 +403,17 @@ a.text-link {
   }
 }
 
-.archive-callout {
+.archive-callout-block {
   @include side-gutter;
   @include center-on-large-page;
+}
+
+.archive-callout {
   font-family: text-stack();
   font-size: 14px;
   color: grayscale(2);
   margin: space(4) 0;
-  padding: space(2) 0;
+  padding: space(2);
   background: grayscale(8);
   text-align: center;
   display: block;

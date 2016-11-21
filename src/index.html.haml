@@ -17,8 +17,9 @@ useSiteFeaturedImage: true
           = postColor
       .entry-content!= post.contents
 
-%p.archive-callout
-  = "For older posts, check the "
-  %a{ href: urlTo("archive") }
-    Archive
-  = " page."
+.archive-callout-block
+  %p.archive-callout
+    = "For older posts, check the "
+    %a{ href: urlTo("archive") }
+      Archive
+    = " page."
