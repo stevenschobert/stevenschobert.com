@@ -24,24 +24,38 @@
 
     - if (title) {
       %meta{ name: "og:title", content: title }
+      %meta{ name: "twitter:title", content: title }
+    - } else {
+      %meta{ name: "og:title", content: "Steven Schobert" }
+      %meta{ name: "twitter:title", content: "Steven Schobert" }
     - }
 
     - if (description) {
       %meta{ name: "og:description", content: description }
+      %meta{ name: "twitter:description", content: description }
     - }
 
     - if (featuredImage) {
       - var absoluteFeaturedImage = "--CANONICAL--" + featuredImage ;
       - var featuredImageTag = '<meta name="og:image" content="'+absoluteFeaturedImage+'"/>';
+      - var twitterImageTag = '<meta name="twitter:image" content="'+absoluteFeaturedImage+'"/>';
       != featuredImageTag
+      != twitterImageTag
     - }
     - if (useSiteFeaturedImage) {
       - var canonicalSiteImage = urlTo("img/site-image.png", { canonical: true });
       %meta{ name: "og:image", content: canonicalSiteImage }
     - }
 
+    - if (featuredImage) {
+      %meta{ name: "twitter:card", content: "summary_large_image" }
+    - } else {
+      %meta{ name: "twitter:card", content: "summary" }
+    - }
+
     %meta{ name: "og:type", content: "website" }
     %meta{ name: "og:url", content: canonicalUrl }
+    %meta{ name: "twitter:site", content: "@stevenschobert" }
 
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
     %link{ rel: "stylesheet", href: urlTo("css/main.css") }
