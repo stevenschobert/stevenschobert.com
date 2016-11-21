@@ -13,6 +13,6 @@ description: On this page you'll find the comprehensive list of every post I've 
       %tbody
         - each post in year.data
           %tr
-            %td{ align: "left", width: "64", valign: "top" }= printDateForArchive(post.date)
+            %td{ align: "left", width: "64", valign: "top" }= printDate(post.date, "MMM D")
             %td{ align: "left", valign: "top" }
               %a{ href: urlTo(post) }= post.title
