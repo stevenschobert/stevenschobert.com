@@ -57,6 +57,8 @@
     %meta{ name: "og:url", content: canonicalUrl }
     %meta{ name: "twitter:site", content: "@stevenschobert" }
 
+    %link{ rel: "me", href: "https://micro.blog/stevenschobert" }
+
     %link{ rel: "alternate", type: "application/rss+xml", title: "RSS Feed for stevenschobert.com", href: urlTo("rss.xml") }
 
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
@@ -156,6 +158,7 @@
         .text-tagline Computer nerd. Maker of web & iOS apps. Husband & dad of two.
         %nav.text-link-list
           %a.text-link{ href: urlTo("/") } Home
+          %a.text-link{ href: urlTo("microblog") } Microblog
           %a.text-link{ href: urlTo("archive") } Archive
           %a.text-link{ href: urlTo("about") } About
           %a.text-link.standout{ href: urlTo("hire") } Hire
@@ -174,6 +177,21 @@
       %article.page.text-content{ role: "main" }
         %h2.entry-title= title
         .entry-content!= contents
+    - } else if (type == "micro") {
+      %article.micro-post.text-content{ role: "main" }
+        .entry-content!= contents
+        .micro-meta
+          %time.micro-date.published{ datetime: date.toISOString() }
+            %a{ href: urlToSelf() }= printDate(date, "MMM D, YYYY h:mm a")
+      .archive-callout-block
+        %p.archive-callout
+          = "This is a microblog post. Fore more posts, follow "
+          %a{ href: "https://micro.blog/stevenschobert" }
+            @stevenschobert
+          = " on "
+          %a{ href: "https://micro.blog" }
+            Micro.blog
+          = "."
     - } else {
       != contents
     - }

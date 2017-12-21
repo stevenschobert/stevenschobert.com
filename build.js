@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 var Metalsmith = require("metalsmith");
+var escapeHtml = require("escape-html");
 
 // 3rd party build scripts
 var archive       = require("metalsmith-archive");
@@ -54,7 +55,7 @@ pipeline.use(inkplate({
     var featuredImage = (customFields.featured_image_url && customFields.featured_image_url.length > 0) ? customFields.featured_image_url : null;
 
     return {
-      collection: "posts",
+      collection: [ "posts", "post_and_micro" ],
       layout: "default.haml",
       title: post.title,
       type: "post",
@@ -64,6 +65,17 @@ pipeline.use(inkplate({
       color: customFields.color,
       link: customFields.link,
       featuredImage: featuredImage
+    };
+  },
+  processMicro: function(micro) {
+    return {
+      collection: [ "micro", "post_and_micro" ],
+      layout: "default.haml",
+      title: micro.title,
+      type: "micro",
+      description: micro.body,
+      draft: !!(micro.status !== "publish"),
+      date: new Date(micro.created_at)
     };
   },
   processPage: function(page) {
@@ -81,6 +93,16 @@ pipeline.use(inkplate({
 pipeline.use(metallic());
 pipeline.use(markdown());
 
+// cache the markdown contents
+pipeline.use(function(files, ms, done) {
+  var file;
+  for (var filename in files) {
+    file = files[filename];
+    file.body_contents = file.contents;
+  }
+  done();
+});
+
 // remove drafts in production
 if (!process.env.INCLUDE_DRAFTS) {
   pipeline.use(drafts());
@@ -91,10 +113,18 @@ pipeline.use(collections({
   posts: {
     sortBy: "date",
     reverse: true
+  },
+  micro: {
+    sortBy: "date",
+    reverse: true
+  },
+  post_and_micro: {
+    sortBy: "date",
+    reverse: true
   }
 }));
 pipeline.use(archive({
-  collections: ["\\d{4}\\/\\d{2}\\/\\d{2}\\/*"]
+  collections: ["\\d{4}\\/\\d{2}\\/\\d{2}\\/\\D+"]
 }));
 pipeline.use(permalink());
 pipeline.use(rootPath());
@@ -146,7 +176,7 @@ pipeline.use(function(files, ms, done) {
   var file;
   for (var filename in files) {
     file = files[filename];
-    if (file.collection && file.collection.indexOf("posts") >= 0) {
+    if (file.collection && file.collection.indexOf("post_and_micro") >= 0) {
       file.siteBaseUrl = baseUrl;
       file.url = file.urlToSelf.call(file, { canonical: true });
     }
@@ -156,10 +186,21 @@ pipeline.use(function(files, ms, done) {
 pipeline.use(feed({
   title: "Steven Schobert",
   collection: "posts",
+  destination: "rss.xml",
   limit: 20,
   site_url: pipeline.metadata().siteBaseUrl,
   postDescription: function(post) {
     return post.description;
+  }
+}));
+pipeline.use(feed({
+  title: "Microblog - Steven Schobert",
+  collection: "micro",
+  destination: "rss-micro.xml",
+  limit: 20,
+  site_url: [ pipeline.metadata().siteBaseUrl, "microblog" ].join("/"),
+  postDescription: function(post) {
+    return escapeHtml(post.body_contents);
   }
 }));
 

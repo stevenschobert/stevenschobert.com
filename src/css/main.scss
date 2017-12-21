@@ -293,6 +293,22 @@ a.text-link {
   margin-bottom: space(3);
 }
 
+.micro-meta {
+  margin-bottom: space(3);
+}
+
+.micro-date {
+  font-size: 12px;
+  font-family: text-stack();
+  color: grayscale(3);
+  display: block;
+}
+
+.micro-date a {
+  color: grayscale(3);
+  text-decoration: underline;
+}
+
 .blog-post .post-title {
   margin: 0 0 space(0.5) 0;
 }
@@ -375,6 +391,20 @@ a.text-link {
 .page {
   @include side-gutter;
   @include center-on-large-page;
+}
+
+.micro-post {
+  @include side-gutter;
+  @include center-on-large-page;
+  margin-top: space(4);
+}
+
+.micro-post-seperator {
+  display: block;
+  height: 1px;
+  background: grayscale(6);
+  margin: space(4) 0;
+  width: 100%;
 }
 
 @media print {
