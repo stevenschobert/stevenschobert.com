@@ -13,7 +13,7 @@ COPY lib/ lib/
 COPY includes/ includes/
 COPY layouts/ layouts/
 COPY src/ src/
-COPY package.json build.js redirects.json ./
+COPY package.json build.js build-server.js redirects.json ./
 COPY default.conf /etc/nginx/conf.d/
 
 RUN touch .env
