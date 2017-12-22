@@ -3,7 +3,7 @@ const childProcess = require("child_process");
 const spawn = childProcess.spawn;
 
 const server = http.createServer(function(req, res) {
-  if (req.url == "/build" && req.method == "POST") {
+  if ((req.url == "/build" || req.url == "/build/") && req.method == "POST") {
     if (req.headers && req.headers["x-api-key"] == process.env.BUILD_SERVER_API_KEY) {
       const buildPs = spawn("node", [ "build.js" ]);
       var stdout = "";
