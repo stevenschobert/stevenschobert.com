@@ -21,8 +21,11 @@ RUN npm install
 
 ENV BUILD_DIR /usr/share/nginx/html
 ENV SKIP_CLEAN 1
+ENV PORT 3000
 
 VOLUME /usr/share/nginx/html
 VOLUME /etc/nginx/conf.d
 
-CMD ["dumb-init", "node", "build"]
+EXPOSE 3000
+
+CMD ["dumb-init", "node", "build-server"]
