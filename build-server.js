@@ -44,9 +44,9 @@ function checkBuild() {
   var host = process.env.INKPLATE_HOST;
   var key = process.env.INKPLATE_API_KEY;
 
-  var path = host + "/api/status?api_key=" + key;
+  var path = host + "/api/status";
 
-  request(path, function (error, response, body) {
+  request({ url: path, json: true, headers: { "x-api-key": key } }, function (error, response, body) {
     checkingBuild = false;
 
     if (error) {
@@ -59,25 +59,14 @@ function checkBuild() {
       return;
     }
 
-    if (!response.body) {
-      console.log("missing response body: " + response.body);
+    if (!response.body || !response.body.last_updated_at) {
+      console.log("last_updated_at not found: " + response.body);
       return;
     }
 
-    var body = null;
-    try {
-      body = JSON.parse(response.body);
-    } catch(error) {
-      console.log("error parsing body: " + error);
-    }
-
-    if (!body || !body.last_updated_at) {
-      console.log("last_updated_at not found: " + body);
-    }
-
-    if (body.last_updated_at != lastBuildTimestamp) {
-      console.log("New timestamp, starting build: " + body.last_updated_at);
-      runBuild(body.last_updated_at);
+    if (response.body.last_updated_at != lastBuildTimestamp) {
+      console.log("New timestamp, starting build: " + response.body.last_updated_at);
+      runBuild(response.body.last_updated_at);
     }
   });
 }
