@@ -27,6 +27,7 @@
     "metalsmith-sass": "^1.4.0",
     "moment": "^2.10.6",
     "multimatch": "^2.1.0",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "slack-webhook": "^1.0.0"
   }
 }

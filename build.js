@@ -2,6 +2,8 @@ require("dotenv").config();
 
 var Metalsmith = require("metalsmith");
 var escapeHtml = require("escape-html");
+var SlackWebhook = require("slack-webhook");
+var bluebird = require("bluebird");
 
 // 3rd party build scripts
 var archive       = require("metalsmith-archive");
@@ -30,6 +32,13 @@ var rename            = require("./lib/rename");
 
 // build state helpers
 var startTime = Date.now();
+
+var slack = null;
+if (process.env.SLACK_WEBHOOK) {
+  slack = new SlackWebhook(process.env.SLACK_WEBHOOK, {
+    Promise: bluebird
+  });
+}
 
 var pipeline = Metalsmith(__dirname);
 pipeline.destination(process.env.BUILD_DIR || "./build");
@@ -207,12 +216,76 @@ pipeline.use(feed({
 // finalize
 pipeline.build(function resolveBuild(error) {
   var endTime = Date.now();
+  var endTimeUnix = endTime / 1000;
   var elapsedSeconds = (endTime - startTime) / 100;
+  var baseUrl = pipeline.metadata().siteBaseUrl;
 
   if (error) {
-    console.log(error);
-    throw error;
+    if (slack != null) {
+      slack.send({
+        attachments: [
+          {
+            fallback: "Failed to build site.",
+            color: "danger",
+            title: "Build Failure",
+            text: "An error occurred during build:\n```"+ error.toString() +"```",
+            mrkdwn_in: ["text"],
+            ts: endTimeUnix,
+            fields: [
+              {
+                title: "Site",
+                value: baseUrl,
+                short: true
+              }
+            ],
+          }
+        ]
+      }).then(function(res) {
+        console.log(error);
+        throw error;
+      }).catch(function(err) {
+        console.log("Error sending to slack");
+        conosle.log(err);
+        console.log(error);
+        throw err;
+      });
+    } else {
+      console.log(error);
+      throw error;
+    }
   } else {
-    console.log("Done building! Build time: " + elapsedSeconds + " seconds");
+    if (slack != null) {
+      slack.send({
+        attachments: [
+          {
+            fallback: "Site built successfully!",
+            color: "good",
+            title: "Build Success",
+            text: "Build succeeded without error.",
+            fields: [
+              {
+                title: "Site",
+                value: baseUrl,
+                short: true
+              },
+              {
+                title: "Build Time",
+                value: "" + elapsedSeconds + " seconds",
+                short: true
+              }
+            ],
+            ts: endTimeUnix
+          }
+        ]
+      }).then(function(res) {
+        console.log("Done building! Build time: " + elapsedSeconds + " seconds");
+      }).catch(function(err) {
+        console.log("Error sending to slack");
+        conosle.log(err);
+        throw err;
+      });
+    } else {
+      console.log("Done building! Build time: " + elapsedSeconds + " seconds");
+    }
   }
 });
