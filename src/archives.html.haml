@@ -1,0 +1,15 @@
+---
+layout: "default.haml"
+title: "Archives"
+type: "page"
+show_in_nav: true
+collection: "pages"
+---
+
+%p
+  %ul.list-inline.ml-0
+  - each year in archive
+    - each month in year.months
+      %li.list-inline-item
+        %a.mx-2{ href: urlTo(month.page) }
+          = printMonth(month.name) + " " + year.year

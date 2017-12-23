@@ -1,9 +1,16 @@
 require("dotenv").config();
 
-var Metalsmith = require("metalsmith");
-var escapeHtml = require("escape-html");
-var SlackWebhook = require("slack-webhook");
-var bluebird = require("bluebird");
+// npm packages
+var autoprefixer    = require("autoprefixer");
+var bluebird        = require("bluebird");
+var escapeHtml      = require("escape-html");
+var marked          = require("marked");
+var Metalsmith      = require("metalsmith");
+var minimatch       = require("minimatch");
+var moment          = require("moment");
+var postcss         = require("postcss");
+var sassSyntax      = require("postcss-scss");
+var SlackWebhook    = require("slack-webhook");
 
 // 3rd party build scripts
 var archive       = require("metalsmith-archive");
@@ -17,6 +24,7 @@ var inPlace       = require("metalsmith-in-place");
 var layouts       = require("metalsmith-layouts");
 var markdown      = require("metalsmith-markdown");
 var metallic      = require("metalsmith-metallic");
+var paginate      = require("metalsmith-pagination");
 var paths         = require("metalsmith-paths");
 var redirect      = require("metalsmith-redirect");
 var rootPath      = require("metalsmith-rootpath");
@@ -29,6 +37,21 @@ var inkplate          = require("./lib/inkplate");
 var permalink         = require("./lib/permalink");
 var relocateUploads   = require("./lib/relocate_uploads");
 var rename            = require("./lib/rename");
+
+// autoprefixer plugin
+var sassAutoprefixer = function sassAutoprefixer() {
+  return function(files, metalsmith, done) {
+    var processor = postcss([autoprefixer]);
+    var targetFiles = Object.keys(files).filter(minimatch.filter("*.scss", { matchBase: true }));
+
+    targetFiles.forEach(function(file) {
+      var prefixedContents = processor.process(files[file].contents.toString(), { syntax: sassSyntax }).css;
+      files[file].contents = new Buffer(prefixedContents);
+    });
+
+    done();
+  };
+}
 
 // build state helpers
 var startTime = Date.now();
@@ -62,9 +85,8 @@ pipeline.use(inkplate({
     var customFields = post.custom_fields || {};
     var description = (post.excerpt && post.excerpt.length > 0) ? post.excerpt : null;
     var featuredImage = (customFields.featured_image_url && customFields.featured_image_url.length > 0) ? customFields.featured_image_url : null;
-
     return {
-      collection: [ "posts", "post_and_micro" ],
+      collection: [ "posts", "post_and_micro" ].concat(post.categories),
       layout: "default.haml",
       title: post.title,
       type: "post",
@@ -73,7 +95,8 @@ pipeline.use(inkplate({
       date: new Date(post.created_at),
       color: customFields.color,
       link: customFields.link,
-      featuredImage: featuredImage
+      featuredImage: featuredImage,
+      categories: post.categories
     };
   },
   processMicro: function(micro) {
@@ -82,20 +105,22 @@ pipeline.use(inkplate({
       layout: "default.haml",
       title: micro.title,
       type: "micro",
-      description: micro.body,
       draft: !!(micro.status !== "publish"),
       date: new Date(micro.created_at)
     };
   },
   processPage: function(page) {
+    var customFields = page.custom_fields || {};
     var description = (page.excerpt && page.excerpt.length > 0) ? page.excerpt : null;
-
+    var showInNav = (customFields.show_in_nav == "true");
     return {
+      collection: "pages",
       draft: !!(page.status !== "publish"),
       layout: "default.haml",
       type: "page",
       description: description,
-      title: page.title
+      title: page.title,
+      show_in_nav: showInNav
     };
   }
 }));
@@ -130,16 +155,77 @@ pipeline.use(collections({
   post_and_micro: {
     sortBy: "date",
     reverse: true
+  },
+  pages: {
+    sortBy: "title",
+    reverse: false
+  }
+}));
+pipeline.use(paginate({
+  "collections.post_and_micro": {
+    perPage: 10,
+    layout: "default.haml",
+    path: "page/:num/index.html.haml",
+    first: "index.html.haml",
+    pageOne: false
   }
 }));
 pipeline.use(archive({
-  collections: ["\\d{4}\\/\\d{2}\\/\\d{2}\\/\\D+"]
+  collections: ["\\d{4}\\/\\d{2}\\/.*"],
+  monthSortOrder: "asc"
 }));
+// create archive pages for each month
+pipeline.use(function(files, ms, done) {
+  var archiveData = ms.metadata().archive;
+  var year;
+  var month;
+  var path;
+  for (var i = 0; i < archiveData.length; i++) {
+    year = archiveData[i];
+    for (var j = 0; j < year.months.length; j++) {
+      month = year.months[j];
+      path = [ "archives", year.year, moment().month(month.name).format("MM"), "index.html.haml" ].join("/");
+      files[path] = {
+        layout: "default.haml",
+        contents: new Buffer(""),
+        title: month.name + " " + year.year,
+        path: path,
+        type: "archive",
+        archive_title: month.name + " " + year.year,
+        archive_data: month.data
+      };
+      month["page"] = files[path];
+    }
+  }
+  done();
+});
+// create archive pages for each category
+pipeline.use(function(files, ms, done) {
+  var collections = ms.metadata().collections;
+  var path;
+  for (var collectionName in collections) {
+    if (collectionName.indexOf("post") < 0 && collectionName.indexOf("micro") < 0 && collectionName.indexOf("pages") < 0) {
+      path = [ "archives", collectionName, "index.html.haml" ].join("/");
+      files[path] = {
+        layout: "default.haml",
+        contents: new Buffer(""),
+        title: collectionName,
+        path: path,
+        type: "archive",
+        archive_title: collectionName,
+        archive_data: collections[collectionName].slice()
+      };
+      collections[collectionName].page = files[path];
+    }
+  }
+  done();
+});
 pipeline.use(permalink());
 pipeline.use(rootPath());
 pipeline.use(paths());
 
 // rendering
+pipeline.use(sassAutoprefixer());
 pipeline.use(sass({
   outputStyle: "compressed"
 }));
@@ -194,22 +280,22 @@ pipeline.use(function(files, ms, done) {
 });
 pipeline.use(feed({
   title: "Steven Schobert",
-  collection: "posts",
+  collection: "post_and_micro",
   destination: "rss.xml",
   limit: 20,
   site_url: pipeline.metadata().siteBaseUrl,
   postDescription: function(post) {
-    return post.description;
+    return post.description || escapeHtml(post.body_contents);
   }
 }));
 pipeline.use(feed({
-  title: "Microblog - Steven Schobert",
-  collection: "micro",
-  destination: "rss-micro.xml",
+  title: "Steven Schobert",
+  collection: "posts",
+  destination: "rss-posts.xml",
   limit: 20,
-  site_url: [ pipeline.metadata().siteBaseUrl, "microblog" ].join("/"),
+  site_url: pipeline.metadata().siteBaseUrl,
   postDescription: function(post) {
-    return escapeHtml(post.body_contents);
+    return post.description || escapeHtml(post.body_contents);
   }
 }));
 
