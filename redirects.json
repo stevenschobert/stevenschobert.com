@@ -3,15 +3,28 @@
   "/twitter": "https://twitter.com/stevenschobert",
 
   "/work": "/about",
-  "/posts": "/archive",
+  "/posts": "/archives",
 
   "/projects": "/about",
-  "/writings": "/archive",
-  "/writings/hello-internets": "/2012/08/20/hello-internets/",
-  "/writings/backbone-and-require": "/2012/09/10/backbone-and-require/",
-  "/writings/monthly-services-student": "/2012/10/10/monthly-services-student/",
-  "/writings/custom-posts-taxonomies-with-wp-cron": "/2012/12/19/custom-posts-taxonomies-with-wp-cron/",
-  "/writings/arrays-and-objects-in-backbone-models": "/2013/01/03/arrays-and-objects-in-backbone-models/",
-  "/writings/hello-oven-bits": "/2013/06/21/hello-oven-bits/",
-  "/writings/a-weekend-with-go": "/2015/12/16/a-weekend-with-go/"
+  "/writings": "/archives",
+  "/writings/hello-internets": "/2012/08/hello-internets/",
+  "/writings/backbone-and-require": "/2012/09/backbone-and-require/",
+  "/writings/monthly-services-student": "/2012/10/monthly-services-student/",
+  "/writings/custom-posts-taxonomies-with-wp-cron": "/2012/12/custom-posts-taxonomies-with-wp-cron/",
+  "/writings/arrays-and-objects-in-backbone-models": "/2013/01/arrays-and-objects-in-backbone-models/",
+  "/writings/hello-oven-bits": "/2013/06/hello-oven-bits/",
+  "/writings/a-weekend-with-go": "/2015/12/a-weekend-with-go/",
+
+  "/2012/08/20/hello-internets/": "/2012/08/hello-internets/",
+  "/2012/09/10/backbone-and-require/": "/2012/09/backbone-and-require/",
+  "/2012/10/10/monthly-services-student/": "/2012/10/monthly-services-student/",
+  "/2012/12/19/custom-posts-taxonomies-with-wp-cron/": "/2012/12/custom-posts-taxonomies-with-wp-cron/",
+  "/2013/01/03/arrays-and-objects-in-backbone-models/": "/2013/01/arrays-and-objects-in-backbone-models/",
+  "/2013/06/21/hello-oven-bits/": "/2013/06/hello-oven-bits/",
+  "/2015/12/16/a-weekend-with-go/": "/2015/12/a-weekend-with-go/",
+
+  "/2016/11/21/my-new-hybrid-static-site": "/2016/11/my-new-hybrid-static-site",
+  "/2016/07/02/finding-best-wireless-channel-osx": "/2016/07/finding-best-wireless-channel-osx",
+
+  "/archive": "/archives"
 }
