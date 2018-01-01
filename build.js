@@ -272,6 +272,7 @@ pipeline.use(function(files, ms, done) {
   for (var filename in files) {
     file = files[filename];
 
+    // make sure URLs always point back to the full site URL
     if (file.collection && file.collection.indexOf("post_and_micro") >= 0) {
       file.siteBaseUrl = baseUrl;
       file.url = file.urlToSelf.call(file, { canonical: true });
@@ -298,7 +299,7 @@ pipeline.use(feed({
 pipeline.use(feed({
   title: "Steven Schobert",
   collection: "posts",
-  destination: "rss-posts.xml",
+  destination: "rss-alternate.xml",
   limit: 20,
   site_url: pipeline.metadata().siteBaseUrl,
   postDescription: function(post) {

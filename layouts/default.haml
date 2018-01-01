@@ -138,7 +138,20 @@
     %footer.foot.container.mt-3.mt-md-4.pb-2
       %p.text-muted.text-center.p-0
         %small
-          All content, unless specified otherwise, is &copy; Steven Schobert 2012-
+          Subscribe to posts on
+          %a{ href: "https://micro.blog/stevenschobert" } Micro.blog
+          = ", "
+          %a{ href: "https://twitter.com/stevenschobert" } Twitter
+          = ", "
+          %a{ href: urlTo("/rss.xml") } RSS feed
+          = ", or the "
+          %a{ href: urlTo("/rss-alternate.xml") } alternate RSS feed
+          = " which doesn't include the micro-posts."
+      %p.text-muted.text-center.p-0
+        %small
+          All content, unless specified otherwise, is
+          %br
+          &copy; Steven Schobert 2012-
           = buildDate.getFullYear()
 
     :javascript
