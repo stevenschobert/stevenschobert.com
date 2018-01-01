@@ -271,9 +271,16 @@ pipeline.use(function(files, ms, done) {
   var file;
   for (var filename in files) {
     file = files[filename];
+
     if (file.collection && file.collection.indexOf("post_and_micro") >= 0) {
       file.siteBaseUrl = baseUrl;
       file.url = file.urlToSelf.call(file, { canonical: true });
+    }
+
+    // this little hack will bypass the "No title" default value
+    // that gets generated in the RSS feed for micro posts
+    if (file.type == "micro") {
+      file.title = new String(file.title || '');
     }
   }
   done();
