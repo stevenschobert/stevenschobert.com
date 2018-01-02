@@ -24,7 +24,6 @@ RUN touch .env
 RUN npm install
 
 ENV BUILD_DIR /usr/share/nginx/html
-ENV SKIP_CLEAN 1
 ENV PORT 3000
 
 VOLUME /usr/share/nginx/html
