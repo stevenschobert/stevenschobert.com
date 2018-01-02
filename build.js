@@ -311,7 +311,7 @@ pipeline.use(feed({
 pipeline.build(function resolveBuild(error) {
   var endTime = Date.now();
   var endTimeUnix = endTime / 1000;
-  var elapsedSeconds = (endTime - startTime) / 100;
+  var elapsedSeconds = (endTime - startTime) / 1000;
   var baseUrl = pipeline.metadata().siteBaseUrl;
 
   if (error) {
