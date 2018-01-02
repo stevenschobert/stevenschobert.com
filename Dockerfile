@@ -4,6 +4,10 @@ FROM node:6.2.0
 COPY support/docker/dumb-init_1.0.1_amd64 /usr/local/bin/dumb-init
 RUN chmod +x /usr/local/bin/dumb-init
 
+# set timezone on container
+ENV TZ=America/Chicago
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN mkdir -p /usr/src/stevenschobert.com
 RUN mkdir -p /usr/share/nginx/html
 RUN mkdir -p /etc/nginx/conf.d
