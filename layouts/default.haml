@@ -7,6 +7,8 @@
 - var pagination = pagination || null;
 - var collections = collections || null;
 - var categories = categories || null;
+- var useCanonicalLinks = useCanonicalLinks || false;
+- var urlOpts = { canonical: useCanonicalLinks };
 - var canonicalUrl = urlToSelf({ canonical: true });
 
 !!! 5
@@ -38,25 +40,25 @@
 
     %link{ rel: "me", href: "https://micro.blog/stevenschobert" }
 
-    %link{ rel: "alternate", type: "application/rss+xml", title: "RSS Feed for stevenschobert.com", href: urlTo("rss.xml") }
+    %link{ rel: "alternate", type: "application/rss+xml", title: "RSS Feed for stevenschobert.com", href: urlTo("rss.xml", urlOpts) }
 
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1" }
-    %link{ rel: "stylesheet", href: urlTo("css/main.css") }
+    %link{ rel: "stylesheet", href: urlTo("css/main.css", urlOpts) }
   %body
 
     .mx-auto.text-center.mt-4.mt-md-5
-      %img.rounded-circle.border-light{ src: urlTo("img/avatar.jpg"), style: "width: 36px; height: 36px;" }
+      %img.rounded-circle.border-light{ src: urlTo("img/avatar.jpg", urlOpts), style: "width: 36px; height: 36px;" }
       %p.h6.mb-0.mt-2 Steven Schobert
       %p.text-weight-light.text-uppercase.text-muted.mt-1.mb-0.small Video Game Developer
 
     .mx-auto.text-center.mt-3.mt-md-4
       %ul.nav.justify-content-center
         %li.nav-item
-          %a.nav-link.small{ href: urlTo("/") } Home
+          %a.nav-link.small{ href: urlTo("/", urlOpts) } Home
         - each page in collections.pages.slice()
           - if (!page.draft && page.show_in_nav === true) {
             %li.nav-item
-              %a.nav-link.small{ href: urlTo(page) }= page.title
+              %a.nav-link.small{ href: urlTo(page, urlOpts) }= page.title
           - }
 
     - if (type == "archive") {
@@ -143,9 +145,9 @@
           = ", "
           %a{ href: "https://twitter.com/stevenschobert" } Twitter
           = ", "
-          %a{ href: urlTo("/rss.xml") } RSS feed
+          %a{ href: urlTo("rss.xml", urlOpts) } RSS feed
           = ", or the "
-          %a{ href: urlTo("/rss-alternate.xml") } alternate RSS feed
+          %a{ href: urlTo("rss-alternate.xml", urlOpts) } alternate RSS feed
           = " which doesn't include the micro-posts."
       %p.text-muted.text-center.p-0
         %small
