@@ -3,7 +3,6 @@ require("dotenv").config();
 // npm packages
 var autoprefixer    = require("autoprefixer");
 var bluebird        = require("bluebird");
-var escapeHtml      = require("escape-html");
 var marked          = require("marked");
 var Metalsmith      = require("metalsmith");
 var minimatch       = require("minimatch");
@@ -293,7 +292,7 @@ pipeline.use(feed({
   limit: 20,
   site_url: pipeline.metadata().siteBaseUrl,
   postDescription: function(post) {
-    return post.description || escapeHtml(post.body_contents);
+    return post.description || post.body_contents;
   }
 }));
 pipeline.use(feed({
@@ -303,7 +302,7 @@ pipeline.use(feed({
   limit: 20,
   site_url: pipeline.metadata().siteBaseUrl,
   postDescription: function(post) {
-    return post.description || escapeHtml(post.body_contents);
+    return post.description || post.body_contents;
   }
 }));
 
