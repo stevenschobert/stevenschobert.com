@@ -171,7 +171,7 @@ pipeline.use(paginate({
 }));
 pipeline.use(archive({
   collections: ["\\d{4}\\/\\d{2}\\/.*"],
-  monthSortOrder: "asc"
+  monthSortOrder: "desc"
 }));
 // create archive pages for each month
 pipeline.use(function(files, ms, done) {
