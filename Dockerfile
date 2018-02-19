@@ -31,4 +31,5 @@ VOLUME /etc/nginx/conf.d
 
 EXPOSE 3000
 
-CMD ["dumb-init", "node", "build-server"]
+#CMD ["dumb-init", "node", "build-server"]
+CMD ["dumb-init", "node", "build"]
